@@ -49,12 +49,12 @@ export const Title = styled.p`
 `;
 
 export const Input = styled.input`
-  font-size: 1.5rem;
   padding: 0.75rem 1rem;
   background: #ffffff;
   border: 1px solid #959595;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
+  font-size: 1.25rem;
 `;
 
 export const Button = styled.button`
@@ -68,6 +68,7 @@ export const Button = styled.button`
 `;
 
 export const Link = styled.a`
-  text-align: center;
   color: ${theme.pink};
+  text-align: center;
+  font-size: 1.25rem;
 `;
