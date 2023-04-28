@@ -2,12 +2,13 @@ import illustration from '../../assets/work.svg';
 import { useState } from 'react';
 import {
   Container,
-  FormContainer,
   Form,
   Title,
   Input,
   Button,
   Link,
+  Left,
+  Right,
 } from './Login.styled';
 
 function Login() {
@@ -22,11 +23,18 @@ function Login() {
 
   return (
     <Container>
-      <FormContainer>
+      <Left>
         <img src={illustration} alt="illustration.svg" />
+      </Left>
 
+      <Right>
         <Form onSubmit={signIn}>
-          <Title>OFFICE PERFORMANCE COMMITMENT REVIEW</Title>
+          <div>
+            <Title>
+              Welcome <span>Back!</span>
+            </Title>
+            <strong>Login to proceed</strong>
+          </div>
 
           <fieldset>
             <Input
@@ -50,7 +58,7 @@ function Login() {
 
           <Button type="submit">Log In</Button>
         </Form>
-      </FormContainer>
+      </Right>
     </Container>
   );
 }

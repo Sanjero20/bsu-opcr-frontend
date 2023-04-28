@@ -1,40 +1,32 @@
 import styled from 'styled-components';
 import theme from '../../styles/theme';
 
-export const Container = styled.div`
-  height: 100vh;
+const SharedStyle = styled.div`
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const Container = styled.div`
+  height: 100vh;
+  display: flex;
   background-color: ${theme.white};
 `;
 
-export const FormContainer = styled.div`
-  display: flex;
-  align-items: center;
-  border-radius: 20px;
-  background-color: white;
-  padding: 4rem 2rem;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+export const Left = styled(SharedStyle)``;
 
-  @media screen and (max-width: 1366px) {
-    transform: scale(0.75);
-  }
+export const Right = styled(SharedStyle)`
+  background-color: white;
 `;
 
 export const Form = styled.form`
-  margin: 0 auto;
+  width: 75%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  align-items: center;
-
-  hr {
-    width: 90%;
-  }
 
   fieldset {
-    width: 90%;
     border: 0;
     display: flex;
     flex-direction: column;
@@ -43,9 +35,13 @@ export const Form = styled.form`
 `;
 
 export const Title = styled.p`
+  font-weight: bold;
   color: ${theme.pink};
-  font-size: 1.75rem;
-  line-height: 42px;
+  font-size: 2rem;
+
+  span {
+    color: #020202;
+  }
 `;
 
 export const Input = styled.input`
@@ -54,11 +50,9 @@ export const Input = styled.input`
   border: 1px solid #959595;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-  font-size: 1.25rem;
 `;
 
 export const Button = styled.button`
-  width: 90%;
   background-color: ${theme.red};
   color: white;
   padding: 1rem;
@@ -70,5 +64,4 @@ export const Button = styled.button`
 export const Link = styled.a`
   color: ${theme.pink};
   text-align: center;
-  font-size: 1.25rem;
 `;
