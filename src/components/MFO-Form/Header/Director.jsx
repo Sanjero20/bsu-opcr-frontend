@@ -16,5 +16,6 @@ function Director() {
 export default Director;
 
 const Td = styled.td`
+  padding: 0.25rem !important;
   border-bottom: 0 !important;
 `;
