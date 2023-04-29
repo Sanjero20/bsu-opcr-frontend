@@ -1,19 +1,33 @@
+import styled from 'styled-components';
+import { NoPadding } from '../Mfo.styled';
+
 function Approval() {
   return (
     <>
-      <tr className="no-pad">
-        <td colSpan={3} style={{ paddingLeft: '1rem' }}>
-          Approved By:
-        </td>
-        <td style={{ textAlign: 'center' }}>Date</td>
+      <tr>
+        <Td1 colSpan={3}>Approved By:</Td1>
+        <Td2>Date</Td2>
       </tr>
 
-      <tr>
+      <EmptyRow>
         <td colSpan={3} />
         <td />
-      </tr>
+      </EmptyRow>
     </>
   );
 }
 
 export default Approval;
+
+const Td1 = styled(NoPadding)`
+  padding-left: 1rem !important;
+`;
+
+const Td2 = styled(NoPadding)`
+  text-align: center;
+  width: calc(250px + 1rem);
+`;
+
+const EmptyRow = styled.tr`
+  height: 4rem;
+`;

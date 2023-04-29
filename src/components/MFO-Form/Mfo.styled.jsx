@@ -14,18 +14,17 @@ export const Container = styled.div`
     flex-direction: column;
   }
 
+  /* For tr containing td */
   .no-pad {
-    * {
+    td {
       padding: 0.1rem;
     }
   }
 `;
 
-export const Logo = styled.img`
-  width: 60px;
-`;
-
 export const Table = styled.table`
+  width: 100%;
+
   * {
     font-family: 'Times New Roman', Times, serif !important;
   }
@@ -35,25 +34,8 @@ export const Table = styled.table`
     border: 1px solid black;
     padding: 1rem;
   }
-
-  width: 100%;
-  position: relative;
 `;
 
-export const IntroAndDate = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-
-  & > div {
-    margin-top: 1rem;
-    width: 250px;
-    align-self: end;
-
-    & > p:first-child {
-      width: 100%;
-      border-top: 1px solid black;
-      text-align: center;
-    }
-  }
+export const NoPadding = styled.td`
+  padding: 0.1rem !important;
 `;

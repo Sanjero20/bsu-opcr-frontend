@@ -1,21 +1,20 @@
+import styled from 'styled-components';
+
 function Director() {
   return (
     <tr>
-      <td
-        colSpan={10}
-        style={{
-          height: '40px',
-          padding: '5px',
-          borderBottom: '0',
-        }}
-      >
+      <Td colSpan={4}>
         <div className="center column">
           <p>ATTY. EARVENE JARED S. CUNANAN</p>
           <p>DIRECTOR for PLANNING AND DEVELOPMENT</p>
         </div>
-      </td>
+      </Td>
     </tr>
   );
 }
 
 export default Director;
+
+const Td = styled.td`
+  border-bottom: 0 !important;
+`;

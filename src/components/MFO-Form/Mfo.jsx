@@ -1,7 +1,7 @@
 import { Container, Table } from './Mfo.styled';
 
 // Header Components
-import Description from './Header/Description';
+import MetaData from './Header/MetaData';
 import Title from './Header/Title';
 import Introduction from './Header/Introduction';
 import Approval from './Header/Approval';
@@ -11,14 +11,31 @@ function Mform() {
   return (
     <Container>
       <div style={{ padding: '1.5rem' }}>
+        {/* Header */}
         <Table>
           <thead>
-            <Description />
+            <MetaData />
+          </thead>
+
+          <tbody>
             <Title />
             <Introduction />
+          </tbody>
+        </Table>
+
+        <Table>
+          <tbody>
             <Approval />
             <Director />
-          </thead>
+          </tbody>
+        </Table>
+
+        {/* Guidelines */}
+
+        <Table>
+          <tbody>
+            <td></td>
+          </tbody>
         </Table>
       </div>
     </Container>

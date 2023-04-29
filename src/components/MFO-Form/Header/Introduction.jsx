@@ -1,10 +1,10 @@
-import { IntroAndDate } from '../Mfo.styled';
+import styled from 'styled-components';
 
 function Introduction() {
   return (
     <tr>
-      <td colSpan={4} style={{ paddingBottom: '0.25rem' }}>
-        <IntroAndDate>
+      <Td colSpan={4}>
+        <Container>
           <p>
             I, POUL ISAAC C. DE CHAVEZ, Asst. Director for Management and
             Information System, commit to deliver and agree to be rated on the
@@ -12,14 +12,37 @@ function Introduction() {
             for the period of January to June 2023
           </p>
 
-          <div>
+          <Signature>
             <p>Unit Head</p>
             <p>Date: </p>
-          </div>
-        </IntroAndDate>
-      </td>
+          </Signature>
+        </Container>
+      </Td>
     </tr>
   );
 }
 
 export default Introduction;
+
+const Td = styled.td`
+  border-bottom: 0 !important;
+  padding-bottom: 0.25em !important;
+`;
+
+const Container = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Signature = styled.div`
+  margin-top: 1rem;
+  width: 250px;
+  align-self: end;
+
+  & > p:first-child {
+    width: 100%;
+    border-top: 1px solid black;
+    text-align: center;
+  }
+`;
