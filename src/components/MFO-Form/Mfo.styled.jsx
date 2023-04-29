@@ -8,6 +8,17 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
   }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .no-pad {
+    * {
+      padding: 0.1rem;
+    }
+  }
 `;
 
 export const Logo = styled.img`
@@ -25,24 +36,18 @@ export const Table = styled.table`
     padding: 1rem;
   }
 
-  tr.no-pad {
-    * {
-      padding: 0.1rem;
-    }
-  }
-
   width: 100%;
   position: relative;
 `;
 
-export const Row3Container = styled.div`
+export const IntroAndDate = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
 
   & > div {
     margin-top: 1rem;
-    width: 17%;
+    width: 250px;
     align-self: end;
 
     & > p:first-child {
