@@ -22,10 +22,12 @@ function Guidelines() {
 export default Guidelines;
 
 const Td = styled.td`
-  padding-left: 3rem !important;
   display: flex;
+  padding-left: 3rem !important;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
+
+  border-bottom: 0 !important;
 `;
