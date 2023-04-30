@@ -10,10 +10,8 @@ function Guidelines() {
       <tbody>
         <tr>
           <Td>
-            {/* <Container> */}
             <TableRating />
             <TableOutput />
-            {/* </Container> */}
           </Td>
         </tr>
       </tbody>
@@ -27,9 +25,7 @@ const Td = styled.td`
   padding-left: 3rem !important;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
-
-  @media screen and (max-width: 1000px) {
-  }
 `;
