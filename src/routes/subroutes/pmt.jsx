@@ -1,7 +1,9 @@
+import Pmt from '../../pages/PMT/Pmt';
+
 const pmtRoutes = [
   {
     index: true,
-    element: <>pmt</>,
+    element: <Pmt />,
   },
 ];
 
