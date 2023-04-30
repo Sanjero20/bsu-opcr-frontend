@@ -1,14 +1,22 @@
 import {
     AbsContainer,
     AccountsButton,
-    CampusButton
+    CampusButton,
+    FormHolder,
+    LeftSeparator,
+    RightSeparator
 } from "./Admin.styled";
 
 const Admin = () => {
     return (
         <AbsContainer>
-            <CampusButton></CampusButton>
-            <AccountsButton></AccountsButton>
+            <LeftSeparator>
+                <CampusButton></CampusButton>
+                <AccountsButton></AccountsButton>
+            </LeftSeparator>
+            <RightSeparator>
+                <FormHolder></FormHolder>
+            </RightSeparator>
         </AbsContainer>
     );
 };
