@@ -27,6 +27,7 @@ export const Table = styled.table`
 
   * {
     font-family: 'Times New Roman', Times, serif !important;
+    font-size: 12px;
   }
 
   td,
