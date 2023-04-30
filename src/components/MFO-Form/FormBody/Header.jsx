@@ -62,27 +62,18 @@ const Thead = styled.thead`
 `;
 
 const TrHead = styled.tr`
-  & > td:first-child {
+  & > td:first-child,
+  & > td:nth-child(2) {
     width: 275px;
   }
 
-  & > td:nth-child(2) {
-  }
-
   & > td:nth-child(3) {
-    width: 100px;
+    width: 150px;
   }
 
-  & > td:nth-child(4) {
-    width: 200px;
-  }
-
+  & > td:nth-child(4),
   & > td:nth-child(5) {
     width: 200px;
-    border-right: 0;
-  }
-
-  & > td:nth-child(6) {
   }
 
   & > td:last-child {
@@ -93,5 +84,9 @@ const TrHead = styled.tr`
 const TrRating = styled.tr`
   * {
     padding: 0.25em 0 !important;
+  }
+
+  td {
+    width: 50px;
   }
 `;
