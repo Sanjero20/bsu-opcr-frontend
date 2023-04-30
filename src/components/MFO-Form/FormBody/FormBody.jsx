@@ -1,6 +1,6 @@
 import { Table } from '../Mfo.styled';
-import Content from './Content/Content';
-import Header from './Header/Header';
+import Content from './Content';
+import Header from './Header';
 
 function FormBody() {
   return (

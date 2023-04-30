@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import theme from '../../../../styles/theme';
+import theme from '../../../styles/theme';
 
 const core = 'CORE FUNCTIONS';
 const strategy = 'STRATEGIC AND SUPPORT FUNCTIONS';
@@ -9,7 +9,7 @@ function Content({ type, data }) {
   return (
     <tbody>
       <Title className="no-pad">
-        <td colSpan={7}>{type === 'core' ? <>{core}</> : <>{strategy}</>}</td>
+        <td colSpan={10}>{type === 'core' ? <>{core}</> : <>{strategy}</>}</td>
       </Title>
 
       {data &&
@@ -21,7 +21,14 @@ function Content({ type, data }) {
               <td></td>
               <td></td>
               <td></td>
-              <td></td>
+
+              {/* Rating */}
+              <td />
+              <td />
+              <td />
+              <td />
+
+              {/* Remarks */}
               <td></td>
             </Contents>
           );
@@ -48,7 +55,6 @@ const Title = styled.tr`
 `;
 
 const Contents = styled.tr`
-  /* min-height: ; */
   td {
     height: auto;
   }

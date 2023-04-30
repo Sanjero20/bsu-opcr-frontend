@@ -1,54 +1,67 @@
 import styled from 'styled-components';
-import theme from '../../../../styles/theme';
-
-import Rating from './Rating';
+import theme from '../../../styles/theme';
 
 function Header() {
   return (
-    <thead>
+    <Thead>
       <TrHead className="no-pad">
         {/* Col 1 */}
-        <td>
+        <td rowSpan={2}>
           Major Final Output (MFOs) / <br />
           Programs, Project & Activities (PPAs)
         </td>
 
         {/* Col 2 */}
-        <td>
+        <td rowSpan={2}>
           Success Indicators <br />
           (Targets + Measures )
         </td>
 
         {/* Col 3*/}
-        <td>Alloted Budget</td>
+        <td rowSpan={2}>Alloted Budget</td>
 
         {/* Col 4 */}
-        <td>
+        <td rowSpan={2}>
           Divisions / Individuals <br />
           Accountable
         </td>
 
         {/* Col 5 */}
-        <td>Actual Accomplishments</td>
+        <td rowSpan={2}>Actual Accomplishments</td>
 
         {/* Col 6 */}
-        <td>
-          <Rating />
-        </td>
+        <td colSpan={4}> Rating</td>
 
         {/* Col 7 */}
-        <td>Remarks</td>
+        <td rowSpan={2}>Remarks</td>
       </TrHead>
-    </thead>
+
+      <TrRating>
+        <td>
+          Q<sup>1</sup>
+        </td>
+        <td>
+          E<sup>2</sup>
+        </td>
+        <td>
+          T<sup>3</sup>
+        </td>
+        <td>
+          A<sup>4</sup>
+        </td>
+      </TrRating>
+    </Thead>
   );
 }
 
 export default Header;
 
-export const TrHead = styled.tr`
+const Thead = styled.thead`
   background-color: ${theme.yellow};
   text-align: center;
+`;
 
+const TrHead = styled.tr`
   & > td:first-child {
     width: 275px;
   }
@@ -70,15 +83,15 @@ export const TrHead = styled.tr`
   }
 
   & > td:nth-child(6) {
-    width: 200px;
-    padding: 0 !important;
-    border: 0;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
   }
 
   & > td:last-child {
     width: 175px;
-    border-left: 0;
+  }
+`;
+
+const TrRating = styled.tr`
+  * {
+    padding: 0.25em 0 !important;
   }
 `;
