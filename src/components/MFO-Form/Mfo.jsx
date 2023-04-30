@@ -1,42 +1,14 @@
-import { Container, Table } from './Mfo.styled';
+import { Container } from './Mfo.styled';
 
-// Header Components
-import MetaData from './Header/MetaData';
-import Title from './Header/Title';
-import Introduction from './Header/Introduction';
-import Approval from './Header/Approval';
-import Director from './Header/Director';
+import FormHeader from './FormHeader/FormHeader';
+import Guidelines from './Guidelines/Guidelines';
 
 function Mform() {
   return (
     <Container>
       <div style={{ padding: '1.5rem' }}>
-        {/* Header */}
-        <Table>
-          <thead>
-            <MetaData />
-          </thead>
-
-          <tbody>
-            <Title />
-            <Introduction />
-          </tbody>
-        </Table>
-
-        <Table>
-          <tbody>
-            <Approval />
-            <Director />
-          </tbody>
-        </Table>
-
-        {/* Guidelines */}
-
-        <Table>
-          <tbody>
-            <td></td>
-          </tbody>
-        </Table>
+        <FormHeader />
+        <Guidelines />
       </div>
     </Container>
   );
