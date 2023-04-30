@@ -2,13 +2,15 @@ import styled from 'styled-components';
 
 function SignatureBlock() {
   return (
-    <tbody>
+    <Tbody>
       <tr className="no-pad">
-        <td>Assessed by: </td>
+        <td className="pad-left">Assessed by: </td>
         <td></td>
         <td></td>
         <td></td>
-        <td colSpan={5}>Final Rating by:</td>
+        <td className="pad-left" colSpan={5}>
+          Final Rating by:
+        </td>
         <td></td>
       </tr>
 
@@ -39,11 +41,17 @@ function SignatureBlock() {
         <td colSpan={5}>Head of Office</td>
         <td> Date</td>
       </TrCenter>
-    </tbody>
+    </Tbody>
   );
 }
 
 export default SignatureBlock;
+
+const Tbody = styled.tbody`
+  .pad-left {
+    padding-left: 1em !important;
+  }
+`;
 
 const TrCenter = styled.tr`
   text-align: center;

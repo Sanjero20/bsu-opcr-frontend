@@ -56,7 +56,7 @@ function Header() {
 
 export default Header;
 
-const Thead = styled.thead`
+const Thead = styled.tbody`
   background-color: ${theme.yellow};
   text-align: center;
 `;

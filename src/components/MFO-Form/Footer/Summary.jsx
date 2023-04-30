@@ -76,4 +76,8 @@ const Tr = styled.tr`
   td {
     padding: 0.25em !important;
   }
+
+  & > td:first-child {
+    padding-left: 1em !important;
+  }
 `;

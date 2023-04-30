@@ -5,8 +5,8 @@ function Director() {
     <tr>
       <Td colSpan={4}>
         <div className="center column">
-          <p>ATTY. EARVENE JARED S. CUNANAN</p>
-          <p>DIRECTOR for PLANNING AND DEVELOPMENT</p>
+          <strong>ATTY. EARVENE JARED S. CUNANAN</strong>
+          <strong>DIRECTOR for PLANNING AND DEVELOPMENT</strong>
         </div>
       </Td>
     </tr>
