@@ -6,6 +6,7 @@ import Header from './Header';
 import Summary from '../Footer/Summary';
 import SignatureBlock from '../Footer/SignatureBlock';
 import Legend from '../Footer/Legend';
+import TableBr from './TableBr';
 
 function FormBody() {
   return (
@@ -14,9 +15,12 @@ function FormBody() {
       <Content type={'core'} data={[{}]} />
       <Content type={'strategic'} data={[{}]} />
 
-      <br />
+      <TableBr />
+
       <Summary />
-      <br />
+
+      <TableBr />
+
       <SignatureBlock />
       <Legend />
     </Table>
