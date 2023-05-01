@@ -7,12 +7,9 @@ import FormBody from './FormBody/FormBody';
 function Mform() {
   return (
     <Container>
-      <div style={{ padding: '1.5rem' }}>
-        <FormHeader />
-        <Guidelines />
-
-        <FormBody />
-      </div>
+      <FormHeader />
+      <Guidelines />
+      <FormBody />
     </Container>
   );
 }

@@ -3,6 +3,8 @@ import styled from 'styled-components';
 // Long bond paper size  2550 x 3900 pixels.
 
 export const Container = styled.div`
+  background-color: white;
+
   .center {
     display: flex;
     justify-content: center;

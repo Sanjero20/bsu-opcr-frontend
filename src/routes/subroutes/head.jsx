@@ -1,9 +1,9 @@
-import Mform from '../../components/MFO-Form/Mfo';
+import Preview from '../../pages/head/preview/Preview';
 
 const headRoutes = [
   {
     index: true,
-    element: <Mform />,
+    element: <Preview />,
   },
 ];
 
