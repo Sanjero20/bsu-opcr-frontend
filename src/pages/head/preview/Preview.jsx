@@ -1,6 +1,6 @@
 import Mform from '../../../components/MFO-Form/Mfo';
-import { Button } from '../../../components/ui/Button.styled';
-import { Container, ButtonContainer } from './Preview.styled';
+import { Container } from '../../../components/ui/Container.styled';
+import { Button, ButtonContainer } from '../../../components/ui/Button.styled';
 
 function Preview() {
   return (
