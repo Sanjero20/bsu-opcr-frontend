@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import theme from '../../styles/theme';
 
+export const ButtonContainer = styled.div`
+  align-self: end;
+  display: flex;
+  gap: 1em;
+`;
+
 export const Button = styled.button`
   width: 150px;
   padding: 0.5em 1em;
