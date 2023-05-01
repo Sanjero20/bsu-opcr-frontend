@@ -2,7 +2,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { Container } from '../../../components/ui/Container.styled';
 import { Button, ButtonContainer } from '../../..//components/ui/Button.styled';
-import { EditField } from './Edit.styled';
+
+import EditForm from './components/EditForm';
 
 function Edit() {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ function Edit() {
     <Container>
       <p>Editing MFO</p>
 
-      <EditField></EditField>
+      <EditForm />
 
       <ButtonContainer>
         <Button yellow>Reset</Button>
