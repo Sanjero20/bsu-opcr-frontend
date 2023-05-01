@@ -1,5 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 
+// layout
+import Main from '../layouts/Main/Main';
+
 // sub-routes
 import adminRoutes from './subroutes/admin';
 import headRoutes from './subroutes/head';
@@ -8,7 +11,6 @@ import pmtRoutes from './subroutes/pmt';
 // pages
 import Login from '../pages/login/Login';
 import Admin from '../pages/admin/Admin';
-import Pmt from '../pages/PMT/Pmt';
 
 const routes = createBrowserRouter([
   {
@@ -22,7 +24,7 @@ const routes = createBrowserRouter([
   },
   {
     path: '/head',
-    // element: <></>,
+    element: <Main />,
     children: [...headRoutes],
   },
   {
