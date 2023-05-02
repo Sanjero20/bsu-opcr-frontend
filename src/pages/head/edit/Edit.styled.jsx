@@ -4,29 +4,13 @@ import theme from '../../../styles/theme';
 import { Button as Btn } from '../../../components/ui/Button.styled';
 
 export const EditField = styled.div`
-  overflow-y: auto;
+  overflow-y: overlay;
   height: 100%;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
   padding-bottom: 0.5em;
   gap: 0.25em;
-
-  ::-webkit-scrollbar {
-    width: 16px;
-    height: 16px;
-  }
-  ::-webkit-scrollbar-track,
-  ::-webkit-scrollbar-thumb {
-    border-radius: 16px;
-    border: solid 5px transparent;
-  }
-  ::-webkit-scrollbar-track {
-    /*   box-shadow: inset 0 0 5px 5px rgba(0, 0, 0, 0.075); */
-  }
-  ::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 5px 5px rgba(0, 0, 0, 0.35);
-  }
 `;
 
 const Grid = styled.div`
@@ -70,6 +54,8 @@ export const Contents = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+
+  overflow-y: auto;
 `;
 
 export const Button = styled(Btn)`

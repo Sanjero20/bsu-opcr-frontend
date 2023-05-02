@@ -23,15 +23,6 @@ export const Container = styled.div`
       padding: 0.1rem;
     }
   }
-
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Hide scrollbar for IE, Edge and Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
 `;
 
 export const Table = styled.table`
