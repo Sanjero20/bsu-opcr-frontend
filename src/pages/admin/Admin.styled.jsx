@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import theme from '../../styles/theme';
+import { HiOutlineBuildingOffice2 } from 'react-icons/hi2';
 
 
 export const Separator = styled.div`
@@ -36,13 +37,15 @@ export const ContentHolder = styled.div`
 `;
 
 export const ButtonStyle = styled.button`
-    width: 93%;
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0px 3px 3px 3px #670F0F;
-    font-size: 14pt;
+
+    font-size: 1.30rem;
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 3.5rem 5.5rem ;
+    border-radius: 15px;
 
     &:active {
         transform: translateY(1.5px);
@@ -50,16 +53,21 @@ export const ButtonStyle = styled.button`
     }
 `;
 
-export const CampusButton = styled(ButtonStyle)`
+export let CampusButton = styled(ButtonStyle)`
     background-color: #B34646;
     color: white;
+    
 `;
+
+
+
 
 export const AccountButton = styled(ButtonStyle)`
     background-color: white;
     color: black;
+    
 `;
 
 /////////////////////////////////////
-//  Campus container elements part //
+//  Campus container elements part // 
 /////////////////////////////////////
