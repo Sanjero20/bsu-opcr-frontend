@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // styles
@@ -22,6 +22,10 @@ function Edit() {
   const [targets, setTargets] = useState([initialState]);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(targets);
+  }, [targets]);
 
   const addTarget = () => {
     const newTarget = createNewTargetObj();
@@ -72,6 +76,21 @@ function Edit() {
     setTargets(updatedTargets);
   };
 
+  const editTarget = (e, targetId) => {
+    const updated = targets.map((target) => {
+      if (target.id == targetId) {
+        return {
+          ...target,
+          target: e.target.value,
+        };
+      }
+
+      return target;
+    });
+
+    setTargets(updated);
+  };
+
   return (
     <Container>
       <p>Editing MFO</p>
@@ -82,6 +101,7 @@ function Edit() {
           targets={targets}
           addSuccessIndicator={addSuccessIndicator}
           deleteSuccessIndicator={deleteSuccessIndicator}
+          editTarget={editTarget}
         />
         <BtnAdd onClick={addTarget}>Add</BtnAdd>
       </EditField>
