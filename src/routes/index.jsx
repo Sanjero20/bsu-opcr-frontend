@@ -10,7 +10,6 @@ import pmtRoutes from './subroutes/pmt';
 
 // pages
 import Login from '../pages/login/Login';
-import Admin from '../pages/admin/Admin';
 
 const routes = createBrowserRouter([
   {
@@ -19,7 +18,7 @@ const routes = createBrowserRouter([
   },
   {
     path: '/admin',
-    element: <Admin />,
+    element: <Main/>,
     children: [...adminRoutes],
   },
   {

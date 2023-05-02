@@ -1,7 +1,9 @@
+import Admin from '../../pages/admin/Admin';
+
 const adminRoutes = [
   {
     index: true,
-    element: <>admin</>,
+    element: <Admin/>,
   },
 ];
 

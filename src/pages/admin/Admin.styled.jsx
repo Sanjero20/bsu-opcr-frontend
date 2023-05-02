@@ -1,73 +1,65 @@
 import styled from 'styled-components';
+import theme from '../../styles/theme';
 
-const coloring = {
-    'bg': '#434343',
-    'bgShadow': '#333333',
-    'btnCampus': '#4B66F9',
-    'btnCampusActive': '#5d76fc',
-    'btnAccounts': '#FF4242',
-    'btnAccountsActive': '#ff6363',
-    'formColor': '#242424'
-};
-
-export const AbsContainer = styled.div`
-    background-color: ${coloring.bg};
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    display: grid;
-    align-items: center;
-    grid-template-columns: 25% 75%;
-`;
-
-export const ButtonRef = styled.button`
-    cursor: pointer;
-    padding: 7rem;
-    width: 90%;
-    border-radius: 25px;
-    box-shadow: 0px 5px 5px 0px ${coloring.bgShadow};
-`;
-
-export const CampusButton = styled(ButtonRef)`
-    background-color: ${coloring.btnCampus};
-    &:active {
-        background-color: ${coloring.btnCampusActive};
-    }
-`;
-    
-export const AccountsButton = styled(ButtonRef)`
-    background-color: ${coloring.btnAccounts};
-    &:active {
-        background-color: ${coloring.btnAccountsActive};
-    }
-`;
-
-export const FormHolder = styled.div`
-    background-color: ${coloring.formColor};
-    border-radius: 25px;
-    box-shadow: 0px 5px 5px 0px ${coloring.bgShadow};
-    height: 100%;
-    width: 100%;
-`;
 
 export const Separator = styled.div`
-    margin: 0 auto;
-    height: 95%;
-    width: 95%;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: calc(20% - 0.5rem) calc(80% - 0.5rem);
+    column-gap: 1rem;
+`;
+
+export const Selection = styled.div`
+    background-color: ${theme.red};
+    padding-top: 2rem;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 1px 1px 2px gray;
+
     display: flex;
-`;
-    
-export const RightSeparator = styled(Separator)`
-    align-items: center;
-    justify-contents: center;
-`;
-    
-export const LeftSeparator = styled(Separator)`
-    row-gap: 2rem;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    gap: 1.5rem;
 `;
-    
+
+export const ContentHolder = styled.div`
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: 0px 2px 5px 0px gray;
+
+    display: grid;
+
+`;
+
+export const ButtonStyle = styled.button`
+    width: 93%;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0px 3px 3px 3px #670F0F;
+    font-size: 14pt;
+
+    &:active {
+        transform: translateY(1.5px);
+        box-shadow: 0px 1.5px 1.5px 1.5px #670F0F;
+    }
+`;
+
+export const CampusButton = styled(ButtonStyle)`
+    background-color: #B34646;
+    color: white;
+`;
+
+export const AccountButton = styled(ButtonStyle)`
+    background-color: white;
+    color: black;
+`;
+
+/////////////////////////////////////
+//  Campus container elements part //
+/////////////////////////////////////
