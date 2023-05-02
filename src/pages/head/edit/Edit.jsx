@@ -87,10 +87,10 @@ function Edit() {
       </EditField>
 
       <ButtonContainer>
-        <Button yellow>Reset</Button>
-        <Button onClick={() => navigate('/head', { replace: true })}>
+        <Button yellow onClick={() => navigate('/head', { replace: true })}>
           Preview
         </Button>
+        <Button>Reset</Button>
       </ButtonContainer>
     </Container>
   );
