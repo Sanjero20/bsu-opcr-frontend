@@ -1,6 +1,7 @@
 import {
     AccountButton,
     CampusButton,
+    Button,
     ContentHolder,
     Separator,
     Selection
@@ -13,6 +14,7 @@ const Admin = () => {
     return (
         <Separator>
             <Selection>
+                <div>
                 <CampusButton>
                     Campus <HiOutlineBuildingOffice2 size={70}/>
                     
@@ -23,9 +25,11 @@ const Admin = () => {
                     Account <IoPeopleCircleOutline size={70}/>
 
                 </AccountButton>
+                </div>
+
+                <Button onClick={() => auth.logout('/')}> Logout </Button>
             </Selection>
             <ContentHolder>
-            
             </ContentHolder>
         </Separator>
     );
