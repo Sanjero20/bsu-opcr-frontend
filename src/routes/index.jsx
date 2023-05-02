@@ -18,7 +18,7 @@ const routes = createBrowserRouter([
   },
   {
     path: '/admin',
-    element: <Main/>,
+    element: <Main />,
     children: [...adminRoutes],
   },
   {
@@ -28,7 +28,7 @@ const routes = createBrowserRouter([
   },
   {
     path: '/pmt',
-    // element: <></>,
+    element: <Main />,
     children: [...pmtRoutes],
   },
 ]);
