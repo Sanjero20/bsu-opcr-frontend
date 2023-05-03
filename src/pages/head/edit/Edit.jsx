@@ -1,9 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-// styles
-import { Container } from '../../../components/ui/Container.styled';
-import { Button, ButtonContainer } from '../../../components/ui/Button.styled';
 import { EditField, Button as BtnAdd } from './Edit.styled';
 
 // subcomponents
@@ -16,20 +12,13 @@ import {
   createSuccessIndicatorObj,
 } from '../../../helpers/targets';
 
-const initialState = createNewTargetObj();
-
-function Edit() {
-  const [targets, setTargets] = useState([initialState]);
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log(targets);
-  }, [targets]);
+function Edit(props) {
+  const { targets, setTargets } = props;
 
   const addTarget = () => {
     const newTarget = createNewTargetObj();
-    // Update the state of targets
+
+    // Append new Target / Row
     const updated = [...targets, newTarget];
     setTargets(updated);
   };
@@ -92,28 +81,22 @@ function Edit() {
   };
 
   return (
-    <Container>
-      <p>Editing MFO</p>
-
-      <EditField>
-        <EditHeader />
-        <EditForm
-          targets={targets}
-          addSuccessIndicator={addSuccessIndicator}
-          deleteSuccessIndicator={deleteSuccessIndicator}
-          editTarget={editTarget}
-        />
-        <BtnAdd onClick={addTarget}>Add</BtnAdd>
-      </EditField>
-
-      <ButtonContainer>
-        <Button yellow onClick={() => navigate('/head', { replace: true })}>
-          Preview
-        </Button>
-        <Button>Reset</Button>
-      </ButtonContainer>
-    </Container>
+    <EditField>
+      <EditHeader />
+      <EditForm
+        targets={targets}
+        addSuccessIndicator={addSuccessIndicator}
+        deleteSuccessIndicator={deleteSuccessIndicator}
+        editTarget={editTarget}
+      />
+      <BtnAdd onClick={addTarget}>Add</BtnAdd>
+    </EditField>
   );
 }
 
 export default Edit;
+
+Edit.propTypes = {
+  targets: PropTypes.array.isRequired,
+  setTargets: PropTypes.func.isRequired,
+};
