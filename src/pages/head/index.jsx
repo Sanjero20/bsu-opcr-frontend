@@ -20,7 +20,7 @@ function Head() {
       <p>Status: {}</p>
 
       {isOnPreview ? (
-        <Preview data={targets} />
+        <Preview targets={targets} />
       ) : (
         <Edit targets={targets} setTargets={setTargets} />
       )}

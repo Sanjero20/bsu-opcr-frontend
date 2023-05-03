@@ -1,36 +1,54 @@
 import PropTypes from 'prop-types';
+import { Fragment } from 'react';
 import styled from 'styled-components';
 import theme from '../../../styles/theme';
 
-const core = 'CORE FUNCTIONS';
-const strategy = 'STRATEGIC AND SUPPORT FUNCTIONS';
-
-function Content({ type, data }) {
+function Content({ data }) {
   return (
     <tbody>
       <Title className="no-pad">
-        <td colSpan={10}>{type === 'core' ? <>{core}</> : <>{strategy}</>}</td>
+        <td colSpan={10}>{}</td>
       </Title>
 
       {data &&
-        data.map((obj, index) => {
+        data.map((obj) => {
+          const { id, target, keySuccess } = obj;
+
           return (
-            <Contents key={index}>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+            <Fragment key={id}>
+              {keySuccess.map((indicator, index) => {
+                const { id, successIndicator } = indicator;
 
-              {/* Rating */}
-              <td />
-              <td />
-              <td />
-              <td />
+                return (
+                  <Contents key={id}>
+                    {/* Target */}
 
-              {/* Remarks */}
-              <td></td>
-            </Contents>
+                    <td>{index == 0 ? <>{target}</> : null}</td>
+
+                    {/* Key Success Indicators */}
+                    <td>{successIndicator}</td>
+
+                    {/* Alloted Budget */}
+                    <td></td>
+
+                    {/* Division/Individual Accountable  */}
+                    <td></td>
+
+                    {/* Actual Accomplishment */}
+                    <td></td>
+
+                    {/* Rating */}
+                    <td />
+                    <td />
+                    <td />
+                    <td />
+
+                    {/* Remarks */}
+                    <td></td>
+                  </Contents>
+                );
+              })}
+            </Fragment>
           );
         })}
     </tbody>
@@ -41,7 +59,6 @@ export default Content;
 
 // Prop Validation
 Content.propTypes = {
-  type: PropTypes.string.isRequired,
   data: PropTypes.array,
 };
 
@@ -50,7 +67,7 @@ const Title = styled.tr`
   background-color: ${theme.gray};
 
   td {
-    padding-left: 0.5rem !important;
+    padding: 1em 0.5rem !important;
   }
 `;
 
