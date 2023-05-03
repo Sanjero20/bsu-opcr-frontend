@@ -2,29 +2,6 @@ import styled from 'styled-components';
 
 // Long bond paper size  2550 x 3900 pixels.
 
-export const Container = styled.div`
-  background-color: white;
-  overflow-y: auto;
-
-  .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .column {
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* For tr containing td */
-  .no-pad {
-    td {
-      padding: 0.1rem;
-    }
-  }
-`;
-
 export const Table = styled.table`
   width: 100%;
 
