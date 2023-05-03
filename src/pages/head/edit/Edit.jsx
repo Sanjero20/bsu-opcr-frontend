@@ -80,6 +80,37 @@ function Edit(props) {
     setTargets(updated);
   };
 
+  const editSuccessIndicator = (e, targetId, indicatorId) => {
+    let updated = targets.map((target) => {
+      // If it matches the targetId
+      if (target.id == targetId) {
+        const { keySuccess } = target;
+
+        // Update the value based on the corresponding indicator id
+        const updatedIndicators = keySuccess.map((indicator) => {
+          if (indicator.id == indicatorId) {
+            return {
+              ...indicator,
+              successIndicator: e.target.value,
+            };
+          }
+
+          return indicator;
+        });
+
+        // Update the matched target
+        return {
+          ...target,
+          keySuccess: updatedIndicators,
+        };
+      }
+
+      return target;
+    });
+
+    setTargets(updated);
+  };
+
   return (
     <EditField>
       <EditHeader />
@@ -88,6 +119,7 @@ function Edit(props) {
         addSuccessIndicator={addSuccessIndicator}
         deleteSuccessIndicator={deleteSuccessIndicator}
         editTarget={editTarget}
+        editSuccessIndicator={editSuccessIndicator}
       />
       <BtnAdd onClick={addTarget}>Add</BtnAdd>
     </EditField>

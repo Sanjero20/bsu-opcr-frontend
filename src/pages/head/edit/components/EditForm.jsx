@@ -7,17 +7,21 @@ function EditForm(props) {
   const { targets, editTarget } = props;
 
   // Success Indicator methods
-  const { addSuccessIndicator, deleteSuccessIndicator } = props;
+  const { addSuccessIndicator, deleteSuccessIndicator, editSuccessIndicator } =
+    props;
 
   const renderIndicators = (targetId, list) => {
     return (
       <>
         {list.length != 0 &&
           list.map((obj) => {
-            const { id } = obj;
+            const { id, successIndicator } = obj;
             return (
               <Fragment key={id}>
-                <Card />
+                <Card
+                  value={successIndicator}
+                  onChange={(e) => editSuccessIndicator(e, targetId, id)}
+                />
                 <Card disabled />
                 <Card disabled />
                 <Card disabled />
@@ -63,4 +67,5 @@ EditForm.propTypes = {
   addSuccessIndicator: PropTypes.func.isRequired,
   deleteSuccessIndicator: PropTypes.func.isRequired,
   editTarget: PropTypes.func.isRequired,
+  editSuccessIndicator: PropTypes.func.isRequired,
 };
