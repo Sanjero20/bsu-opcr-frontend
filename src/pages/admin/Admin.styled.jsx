@@ -38,7 +38,16 @@ export const ContentHolder = styled.div`
     box-shadow: 0px 2px 5px 0px gray;
 
     display: grid;
+    grid-template-columns: 30% 70%;
+    align-items: center;
 
+    div.gridItem {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 `;
 
 export const ButtonStyle = styled.button`
@@ -49,6 +58,10 @@ export const ButtonStyle = styled.button`
     cursor: pointer;
     box-shadow: 0px 3px 3px 3px #670F0F;
     font-size: 14pt;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:active {
         transform: translateY(1.5px);
@@ -63,7 +76,7 @@ export const CampusButton = styled(ButtonStyle)`
 
 export const AccountButton = styled(ButtonStyle)`
     background-color: white;
-    color: black;
+    color: #853030;
 `;
 
 export const Button = styled.button`
@@ -77,6 +90,3 @@ export const Button = styled.button`
     text-decoration: underline;
   }
 `;
-/////////////////////////////////////
-//  Campus container elements part //
-/////////////////////////////////////
