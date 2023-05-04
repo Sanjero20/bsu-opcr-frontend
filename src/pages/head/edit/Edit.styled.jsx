@@ -67,11 +67,11 @@ export const Button = styled(Btn)`
 
 export const BtnAddIndicator = styled(Button)`
   background-color: #4bbd2e;
-  width: auto;
   margin-bottom: 1em;
+  width: auto;
 `;
 
-export const BtnCircle = styled.button`
+export const BtnCircle = styled(Button)`
   border-radius: 5px;
   background-color: ${theme.red};
   color: white;
