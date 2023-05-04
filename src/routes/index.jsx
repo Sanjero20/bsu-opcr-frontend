@@ -1,7 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-// layout
-import Main from '../layouts/Main/Main';
+// layouts
+import AdminLayout from '../layouts/AdminLayout';
+import Layout from '../layouts/Layout';
 
 // sub-routes
 import adminRoutes from './subroutes/admin';
@@ -18,17 +19,17 @@ const routes = createBrowserRouter([
   },
   {
     path: '/admin',
-    element: <Main />,
+    element: <AdminLayout />,
     children: [...adminRoutes],
   },
   {
     path: '/head',
-    element: <Main />,
+    element: <Layout />,
     children: [...headRoutes],
   },
   {
     path: '/pmt',
-    element: <Main />,
+    element: <Layout />,
     children: [...pmtRoutes],
   },
 ]);
