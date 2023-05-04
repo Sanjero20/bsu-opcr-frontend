@@ -18,6 +18,7 @@ export const Left = styled(SharedStyle)``;
 
 export const Right = styled(SharedStyle)`
   background-color: white;
+  border-radius: 20px;
 `;
 
 export const Form = styled.form`

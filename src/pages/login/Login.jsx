@@ -1,5 +1,5 @@
 import illustration from '../../assets/work.svg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Container,
   Form,
@@ -11,14 +11,30 @@ import {
   Right,
 } from './Login.styled';
 
+import { login } from '../../services/requests';
+
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (!error) return;
+    setError('');
+  }, [username, password]);
+
   const signIn = async (e) => {
     e.preventDefault();
 
-    console.log(username, password);
+    const response = await login({ username, password });
+
+    if (response.error) {
+      setError(response.error);
+      return;
+    }
+
+    // Redirect based on access type:
   };
 
   return (
@@ -42,6 +58,7 @@ function Login() {
               placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              required
             />
 
             <Input
@@ -49,12 +66,14 @@ function Login() {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
 
             <Link href="">Forgot Password?</Link>
           </fieldset>
 
           <hr />
+          {error && <>{error}</>}
 
           <Button type="submit">Log In</Button>
         </Form>
