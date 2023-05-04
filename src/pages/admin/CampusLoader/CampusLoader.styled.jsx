@@ -39,26 +39,27 @@ export const TextButton = styled.button`
 
 export const CreateButton = styled.button`
   background-color: ${theme.red};
-  border-radius: 10px;
-  box-shadow: 0px 2px 2px 0px gray;
+  border-radius: 5px;
+  // box-shadow: 0px 2px 2px 0px gray;
   color: white;
 
-  padding-top: 0.4rem;
-  padding-bottom: 0.4rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
   width: 5rem;
 
   &:active {
-    transform: translateY(2px);
-    box-shadow: 0px 0px 0px 0px gray;
+    background-color: white;
+    color: ${theme.red};
   }
 `;
 
 export const Input = styled.input`
   background-color: white;
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 5px;
   width: calc(95% - 5rem);
   padding: 0.3rem;
+  font-size: 10pt;
 `;
 
 export const CLHeader = styled.h3`

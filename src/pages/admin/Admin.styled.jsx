@@ -52,6 +52,8 @@ export const ContentHolder = styled.div`
 
 export const ButtonStyle = styled.button`
     width: 93%;
+    background-color: #B34646;
+    color: white;
     padding-top: 3.5rem;
     padding-bottom: 3.5rem;
     border-radius: 10px;
@@ -66,17 +68,14 @@ export const ButtonStyle = styled.button`
     &:active {
         transform: translateY(1.5px);
         box-shadow: 0px 1.5px 1.5px 1.5px #670F0F;
+        background-color: white;
+        color: #853030;
     }
-`;
 
-export const CampusButton = styled(ButtonStyle)`
-    background-color: #B34646;
-    color: white;
-`;
-
-export const AccountButton = styled(ButtonStyle)`
-    background-color: white;
-    color: #853030;
+    &:focus {
+        background-color: white;
+        color: #853030;
+    }
 `;
 
 export const Button = styled.button`
