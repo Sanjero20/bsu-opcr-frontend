@@ -1,8 +1,10 @@
 import React from 'react';
 import { Container } from './Styled';
 import { Input, Depts, Divider } from './Styled';
-import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+
 function Landing() {
+  const navigate = useNavigate();
   const arr = [
     { name: 'hey' },
     { name: 'kenn' },
@@ -17,7 +19,7 @@ function Landing() {
     { name: 'joshua' },
   ];
   const Mapped = arr.map((nam) => (
-    <Depts onClick={() => console.log('hehe')}>{nam.name} </Depts>
+    <Depts onClick={() => navigate('./preview')}>{nam.name} </Depts>
   ));
   return (
     <Container>
