@@ -10,8 +10,6 @@ export const LayoutContainer = styled.div`
 export const ContentContainer = styled.div`
   padding: 1rem;
   height: calc(100vh - 85px);
-  display: flex;
-  gap: 0.5em;
 `;
 
 export const Content = styled.div`
