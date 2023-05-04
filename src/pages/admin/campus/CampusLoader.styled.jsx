@@ -1,8 +1,8 @@
-import theme from "../../../styles/theme";
-import styled from "styled-components";
+import theme from '../../../styles/theme';
+import styled from 'styled-components';
 
 export const CampusHolder = styled.div`
-  background-color: #EFEFEF;
+  background-color: #efefef;
   height: 95%;
   width: 95%;
   border-radius: 10px;
@@ -34,7 +34,9 @@ export const TextButton = styled.button`
   text-align: left;
   padding: 0.5rem;
   font-size: 12pt;
-  &:hover { color: ${theme.red} }
+  &:hover {
+    color: ${theme.red};
+  }
 `;
 
 export const CreateButton = styled.button`
