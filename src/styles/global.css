@@ -70,3 +70,21 @@ table {
 ::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 5px 5px rgba(0, 0, 0, 0.35);
 }
+
+@media print {
+  * {
+    visibility: hidden;
+  }
+
+  #mfo-form,
+  #mfo-form * {
+    visibility: visible;
+  }
+
+  #mfo-form {
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
