@@ -10,17 +10,16 @@ const Button = ({ text, campusID }) => {
 
 // DynCampusLoader loads all the campus info
 // from an object
-const DynCampusLoader = ({ campusObj }) => {
+const DynCampusLoader = ({ campusList }) => {
   return (
     <DivMW>
       <CLHeader1>Campuses</CLHeader1>
       <CLContainer>
         {
-          (campusObj != null && Object.keys(campusObj).length > 0) ?
-          Object.keys(campusObj).map((val, index) => {
-            return <Button key={index} text={campusObj[val].text} campusID={campusObj[val].campusID} />
-          })
-          : <></>
+          (campusList && campusList.length > 0) ?
+          campusList.map((item, index) => {
+            return <Button key={index} text={item.campusName} campusID={item._id}/>
+          }) : <></>
         }
       </CLContainer>
     </DivMW>

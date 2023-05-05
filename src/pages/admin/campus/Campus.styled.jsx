@@ -8,7 +8,8 @@ export const CampusWrapper = styled.div`
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: 30% 60%;
+  grid-template-columns: 30% calc(70% - 0.5rem);
+  gap: 0.5rem;
 `;
 
 export const SideCampusListWrapper = styled.div`
@@ -23,6 +24,11 @@ export const SideCampusListWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+`;
+
+export const SideDepartmentListWrapper = styled(SideCampusListWrapper)`
+  background-color: white;
+  border: none;
 `;
 
 export const CLContainer = styled.div`
@@ -83,4 +89,14 @@ export const CLHeader1 = styled.p`
   font-size: 15pt;
   font-weight: bold;
   border-bottom: 1px solid black;
-`
+`;
+
+export const CLHeader2 = styled(CLHeader1)`
+  font-size: 13pt;
+  font-weight: normal;
+`;
+
+export const CPHighlight = styled.p`
+  font-size: 13pt;
+  padding: 0.5rem;
+`;

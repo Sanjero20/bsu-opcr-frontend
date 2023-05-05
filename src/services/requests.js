@@ -85,3 +85,12 @@ export const createOpcr = async (opcrDetailsJSON) => {
   arrayParamChecker(['target', 'keySuccess'], opcrDetailsJSON.opcr, 'opcr');
   return await postAPIRequest('/head/create/opcr/', opcrDetailsJSON);
 };
+
+
+////////////////////////
+//  admin operations  //
+////////////////////////
+// retrieves all the campuses data
+export const retrieveCampuses = async () => {
+  return await getAPIRequest('/admin/read/campus');
+};

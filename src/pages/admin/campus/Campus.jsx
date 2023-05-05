@@ -3,38 +3,27 @@ import {
   AddButton,
   CampusWrapper,
   SideCampusListWrapper,
+  SideDepartmentListWrapper,
   Input,
   DivCS
 } from "./Campus.styled";
 
+import { retrieveCampuses } from "../../../services/requests";
+
 import DynCampusLoader from "./loaders/Campus.dynamic";
+import DynDepartmentLoader from "./loaders/Departments.dynamic";
 
-const WrappedInput = ({ campusListCopy, globalLoader }) => {
+const WrappedInput = ({ globalLoader }) => {
   const [addedInput, appendInput] = useState('');
-  const [localCampus, localCampusLoader] = useState([]);
-
   const charAppend = (val) => {
     appendInput(val.target.value);
   };
 
   const loadGlobalCampus = () => {
-    localCampusLoader((currentLocalList) => {
-      return [...currentLocalList, { text: addedInput, campusID: 'xxxxx' }]
-    });
-
     globalLoader((currentCampusList) => {
-      return [...currentCampusList, { text: addedInput, campusID: 'xxxxx' }]
+      return [...currentCampusList, { campusName: addedInput, campusID: 'xxxxx' }]
     });
   };
-
-  useEffect(() => {
-    campusListCopy.forEach(val => {
-      localCampusLoader([...localCampus, {
-        id: localCampus.length,
-        value: val
-      }]);
-    });
-  }, []);
 
   return (
     <DivCS>
@@ -45,14 +34,33 @@ const WrappedInput = ({ campusListCopy, globalLoader }) => {
 };
 
 const Campus = () => {
-  const [campusList, campusListLoader] = useState([])
+  const [campusList, campusListLoader] = useState([]);
+  const [departmentList, departmentListLoader] = useState([]);
+
+  // retrieves all the campuses and loads it
+  useEffect(() => {
+    async function retrieveData() {
+      try {
+        const response = await retrieveCampuses();
+        if (response.error) throw response.error;
+        campusListLoader(response.campus);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    retrieveData();
+  }, []);
 
   return (
     <CampusWrapper>
       <SideCampusListWrapper>
-        <DynCampusLoader campusObj={campusList}/>
-        <WrappedInput campusListCopy={campusList} globalLoader={campusListLoader}/>
+        <DynCampusLoader campusList={campusList}/>
+        <WrappedInput globalLoader={campusListLoader}/>
       </SideCampusListWrapper>
+      <SideDepartmentListWrapper>
+        <DynDepartmentLoader/>
+        <WrappedInput globalLoader={departmentListLoader}/>
+      </SideDepartmentListWrapper>
     </CampusWrapper>
   );
 };
