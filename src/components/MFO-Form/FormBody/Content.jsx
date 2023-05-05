@@ -22,11 +22,12 @@ function Content({ data }) {
                 return (
                   <Contents key={id}>
                     {/* Target */}
-
-                    <td>{index == 0 ? <>{target}</> : null}</td>
+                    <td>{index == 0 ? <>{target}</> : null} </td>
 
                     {/* Key Success Indicators */}
-                    <td>{successIndicator}</td>
+                    <td>
+                      <pre>{successIndicator}</pre>
+                    </td>
 
                     {/* Alloted Budget */}
                     <td></td>
@@ -73,6 +74,11 @@ const Title = styled.tr`
 
 const Contents = styled.tr`
   td {
-    height: auto;
+    height: 1.25rem;
+    padding: 0.25rem !important;
+  }
+
+  pre {
+    white-space: pre-wrap;
   }
 `;

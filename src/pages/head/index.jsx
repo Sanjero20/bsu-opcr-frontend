@@ -8,7 +8,6 @@ import { Button, ButtonContainer } from '../../components/ui/Button.styled';
 
 function Head() {
   const [targets, setTargets] = useState([]);
-
   const [isOnPreview, setIsOnPreview] = useState(true);
 
   const toggleState = () => {
@@ -26,6 +25,8 @@ function Head() {
       )}
 
       <ButtonContainer>
+        {isOnPreview && <Button onClick={() => window.print()}> Print</Button>}
+
         <Button yellow onClick={toggleState}>
           {isOnPreview ? <>Edit</> : <>Preview</>}
         </Button>
