@@ -1,26 +1,20 @@
-import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import Mform from '../../../components/MFO-Form/Mfo';
-import { Container } from '../../../components/ui/Container.styled';
-import { Button, ButtonContainer } from '../../../components/ui/Button.styled';
 
-function Preview() {
-  const navigate = useNavigate();
+export const TargetContext = React.createContext();
 
+function Preview({ targets }) {
   return (
-    <Container>
-      <p>Status: Callibrating</p>
-
-      <Mform />
-
-      <ButtonContainer>
-        <Button yellow onClick={() => navigate('edit')}>
-          Edit
-        </Button>
-        <Button>Submit</Button>
-      </ButtonContainer>
-    </Container>
+    <TargetContext.Provider value={targets}>
+      <Mform targets={targets} />
+    </TargetContext.Provider>
   );
 }
 
 export default Preview;
+
+Preview.propTypes = {
+  targets: PropTypes.array.isRequired,
+};

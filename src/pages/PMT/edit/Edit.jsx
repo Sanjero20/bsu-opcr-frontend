@@ -1,9 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-// styles
-import { Container } from '../../../components/ui/Container.styled';
-import { Button, ButtonContainer } from '../../../components/ui/Button.styled';
 import { EditField, Button as BtnAdd } from './Edit.styled';
 
 // subcomponents
@@ -16,16 +12,13 @@ import {
   createSuccessIndicatorObj,
 } from '../../../helpers/targets';
 
-const initialState = createNewTargetObj();
-
-function Edit() {
-  const [targets, setTargets] = useState([initialState]);
-
-  const navigate = useNavigate();
+function Edit(props) {
+  const { targets, setTargets } = props;
 
   const addTarget = () => {
     const newTarget = createNewTargetObj();
-    // Update the state of targets
+
+    // Append new Target / Row
     const updated = [...targets, newTarget];
     setTargets(updated);
   };
@@ -72,28 +65,70 @@ function Edit() {
     setTargets(updatedTargets);
   };
 
+  const editTarget = (e, targetId) => {
+    const updated = targets.map((target) => {
+      if (target.id == targetId) {
+        return {
+          ...target,
+          target: e.target.value,
+        };
+      }
+
+      return target;
+    });
+
+    setTargets(updated);
+  };
+
+  const editSuccessIndicator = (e, targetId, indicatorId) => {
+    let updated = targets.map((target) => {
+      // If it matches the targetId
+      if (target.id == targetId) {
+        const { keySuccess } = target;
+
+        // Update the value based on the corresponding indicator id
+        const updatedIndicators = keySuccess.map((indicator) => {
+          if (indicator.id == indicatorId) {
+            return {
+              ...indicator,
+              successIndicator: e.target.value,
+            };
+          }
+
+          return indicator;
+        });
+
+        // Update the matched target
+        return {
+          ...target,
+          keySuccess: updatedIndicators,
+        };
+      }
+
+      return target;
+    });
+
+    setTargets(updated);
+  };
+
   return (
-    <Container>
-      <p>Editing MFO</p>
-
-      <EditField>
-        <EditHeader />
-        <EditForm
-          targets={targets}
-          addSuccessIndicator={addSuccessIndicator}
-          deleteSuccessIndicator={deleteSuccessIndicator}
-        />
-        <BtnAdd onClick={addTarget}>Add</BtnAdd>
-      </EditField>
-
-      <ButtonContainer>
-        <Button yellow>Reset</Button>
-        <Button onClick={() => navigate('/head', { replace: true })}>
-          Preview
-        </Button>
-      </ButtonContainer>
-    </Container>
+    <EditField>
+      <EditHeader />
+      <EditForm
+        targets={targets}
+        addSuccessIndicator={addSuccessIndicator}
+        deleteSuccessIndicator={deleteSuccessIndicator}
+        editTarget={editTarget}
+        editSuccessIndicator={editSuccessIndicator}
+      />
+      <BtnAdd onClick={addTarget}>Add</BtnAdd>
+    </EditField>
   );
 }
 
 export default Edit;
+
+Edit.propTypes = {
+  targets: PropTypes.array.isRequired,
+  setTargets: PropTypes.func.isRequired,
+};
