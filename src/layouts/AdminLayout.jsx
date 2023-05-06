@@ -28,7 +28,7 @@ function AdminLayout() {
 
   return (
     <LayoutContainer>
-      <Header />
+      <Header hide />
       <Main>
         <Sidebar />
         <Content>

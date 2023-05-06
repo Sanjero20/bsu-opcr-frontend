@@ -71,6 +71,10 @@ table {
   box-shadow: inset 0 0 5px 5px rgba(0, 0, 0, 0.35);
 }
 
+@page {
+  size: legal landscape;
+}
+
 @media print {
   * {
     visibility: hidden;
