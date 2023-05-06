@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid';
 
 export const createNewTargetObj = () => {
   return {
-    id: uuid(),
+    _id: uuid(),
     target: '',
     keySuccess: [
       {
@@ -15,7 +15,7 @@ export const createNewTargetObj = () => {
 
 export const createSuccessIndicatorObj = () => {
   return {
-    id: uuid(),
+    _id: uuid(),
     keyResult: '',
     successIndicator: '',
   };

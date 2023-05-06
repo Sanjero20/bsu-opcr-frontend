@@ -12,15 +12,15 @@ function Content({ data }) {
 
       {data &&
         data.map((obj) => {
-          const { id, target, keySuccess } = obj;
+          const { _id, target, keySuccess } = obj;
 
           return (
-            <Fragment key={id}>
+            <Fragment key={_id}>
               {keySuccess.map((indicator, index) => {
-                const { id, successIndicator } = indicator;
+                const { _id, successIndicator } = indicator;
 
                 return (
-                  <Contents key={id}>
+                  <Contents key={_id}>
                     {/* Target */}
                     <td>{index == 0 ? <>{target}</> : null} </td>
 

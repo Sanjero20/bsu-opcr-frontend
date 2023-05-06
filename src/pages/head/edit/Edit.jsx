@@ -26,7 +26,7 @@ function Edit(props) {
   const addSuccessIndicator = (id) => {
     const updatedTargets = targets.map((target) => {
       // Add new success indicator if it matches the ID
-      if (target.id == id) {
+      if (target._id == id) {
         return {
           ...target,
           keySuccess: [...target.keySuccess, createSuccessIndicatorObj()],
@@ -39,12 +39,12 @@ function Edit(props) {
 
   const deleteSuccessIndicator = (targetId, indicatorId) => {
     let updatedTargets = targets.map((target) => {
-      if (target.id == targetId) {
+      if (target._id == targetId) {
         const { keySuccess } = target;
 
         // Remove the success indicator that matches the id
         const updatedList = keySuccess.filter(
-          (indicator) => indicator.id != indicatorId
+          (indicator) => indicator._id != indicatorId
         );
 
         // Delete the whole target/row if the success indicator is empty
@@ -67,7 +67,7 @@ function Edit(props) {
 
   const editTarget = (e, targetId) => {
     const updated = targets.map((target) => {
-      if (target.id == targetId) {
+      if (target._id == targetId) {
         return {
           ...target,
           target: e.target.value,
@@ -83,12 +83,12 @@ function Edit(props) {
   const editSuccessIndicator = (e, targetId, indicatorId) => {
     let updated = targets.map((target) => {
       // If it matches the targetId
-      if (target.id == targetId) {
+      if (target._id == targetId) {
         const { keySuccess } = target;
 
         // Update the value based on the corresponding indicator id
         const updatedIndicators = keySuccess.map((indicator) => {
-          if (indicator.id == indicatorId) {
+          if (indicator._id == indicatorId) {
             return {
               ...indicator,
               successIndicator: e.target.value,

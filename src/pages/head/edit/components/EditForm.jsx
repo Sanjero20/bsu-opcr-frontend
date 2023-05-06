@@ -15,18 +15,20 @@ function EditForm(props) {
       <>
         {list.length != 0 &&
           list.map((obj) => {
-            const { id, successIndicator } = obj;
+            const { _id, successIndicator } = obj;
             return (
-              <Fragment key={id}>
+              <Fragment key={_id}>
                 <Card
                   value={successIndicator}
-                  onChange={(e) => editSuccessIndicator(e, targetId, id)}
+                  onChange={(e) => editSuccessIndicator(e, targetId, _id)}
                 />
                 <Card disabled />
                 <Card disabled />
                 <Card disabled />
 
-                <BtnCircle onClick={() => deleteSuccessIndicator(targetId, id)}>
+                <BtnCircle
+                  onClick={() => deleteSuccessIndicator(targetId, _id)}
+                >
                   &times;
                 </BtnCircle>
                 <p></p>
@@ -41,16 +43,16 @@ function EditForm(props) {
     <Contents>
       {targets.length != 0 &&
         targets.map((obj) => {
-          const { id, target, keySuccess } = obj;
+          const { _id, target, keySuccess } = obj;
 
           return (
-            <Row key={id}>
+            <Row key={_id}>
               <RowContent>
-                <Card value={target} onChange={(e) => editTarget(e, id)} />
-                {renderIndicators(id, keySuccess)}
+                <Card value={target} onChange={(e) => editTarget(e, _id)} />
+                {renderIndicators(_id, keySuccess)}
               </RowContent>
 
-              <BtnAddIndicator onClick={() => addSuccessIndicator(id)}>
+              <BtnAddIndicator onClick={() => addSuccessIndicator(_id)}>
                 Add Success Indicator
               </BtnAddIndicator>
             </Row>
