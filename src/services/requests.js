@@ -86,6 +86,10 @@ export const createOpcr = async (opcrDetailsJSON) => {
   return await postAPIRequest('/head/create/opcr/', opcrDetailsJSON);
 };
 
+export const retrieveHeadOpcr = async () => {
+  return await getAPIRequest('/head/read/opcr');
+};
+
 
 ////////////////////////
 //  admin operations  //
