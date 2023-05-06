@@ -4,7 +4,11 @@ import Preview from './preview/Preview';
 import Edit from './edit/Edit';
 
 import { Container } from '../../components/ui/Container.styled';
-import { Button, ButtonContainer } from '../../components/ui/Button.styled';
+import {
+  Button,
+  ButtonContainer,
+  AcceptBut,
+} from '../../components/ui/Button.styled';
 
 function Index() {
   const [targets, setTargets] = useState([]);
@@ -25,13 +29,14 @@ function Index() {
       )}
 
       <ButtonContainer>
-        {isOnPreview && <Button onClick={() => window.print()}> Print</Button>}
-
         <Button yellow onClick={toggleState}>
           {isOnPreview ? <>Edit</> : <>Preview</>}
         </Button>
+        {isOnPreview && (
+          <Button onClick={() => window.print()}> Decline</Button>
+        )}
 
-        {isOnPreview ? <Button>Submit</Button> : <Button>Reset</Button>}
+        {isOnPreview ? <AcceptBut>Accept</AcceptBut> : <Button>Reset</Button>}
       </ButtonContainer>
     </Container>
   );

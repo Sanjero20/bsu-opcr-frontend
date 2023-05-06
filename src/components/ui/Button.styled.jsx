@@ -27,3 +27,6 @@ export const Button = styled.button`
     cursor: default;
   }
 `;
+export const AcceptBut = styled(Button)`
+  background-color: green;
+`;
