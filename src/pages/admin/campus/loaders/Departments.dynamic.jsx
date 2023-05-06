@@ -1,16 +1,21 @@
 import { CLHeader1, CLHeader2, CPHighlight, DivMW } from "../Campus.styled";
 
-const DynDepartmentLoader = () => {
+const DynDepartmentLoader = (props) => {
+  const { campusObj } = props;
+  const { campusName, departments } = campusObj;
+
   return (
     <DivMW>
       <CLHeader1>Campus</CLHeader1>
-      <CPHighlight>Alangilan</CPHighlight>
+      <CPHighlight>{(campusName) ? campusName : <></>}</CPHighlight>
       <br/>
       <CLHeader2>Departments</CLHeader2>
-      <CPHighlight>Alangilan</CPHighlight>
-      <CPHighlight>Alangilan</CPHighlight>
-      <CPHighlight>Alangilan</CPHighlight>
-
+      {
+        (departments && departments.length > 0) ?
+        departments.map(item => {
+          return <CPHighlight>{item.name}</CPHighlight>
+        }) : <></>
+      }
     </DivMW>
   );
 };

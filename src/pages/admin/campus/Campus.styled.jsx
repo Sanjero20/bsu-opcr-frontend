@@ -97,6 +97,7 @@ export const CLHeader2 = styled(CLHeader1)`
 `;
 
 export const CPHighlight = styled.p`
+  cursor: pointer;
   font-size: 13pt;
   padding: 0.5rem;
 `;

@@ -2,15 +2,20 @@ import { CLButton, CLContainer, CLHeader1, DivMW } from "../Campus.styled";
 
 // campusID will be used for mapping
 // the departments included soon
-const Button = ({ text, campusID }) => {
+const Button = (props) => {
+  const { campusID, text, setSelectedCampus } = props;
+  const displayCampus = () => { setSelectedCampus(campusID); };
+
   return (
-    <CLButton>{text}</CLButton>
+    <CLButton onClick={displayCampus}>{text}</CLButton>
   );
 };
 
 // DynCampusLoader loads all the campus info
 // from an object
-const DynCampusLoader = ({ campusList }) => {
+const DynCampusLoader = (props) => {
+  const { campusList, setSelectedCampus } = props;
+
   return (
     <DivMW>
       <CLHeader1>Campuses</CLHeader1>
@@ -18,7 +23,10 @@ const DynCampusLoader = ({ campusList }) => {
         {
           (campusList && campusList.length > 0) ?
           campusList.map((item, index) => {
-            return <Button key={index} text={item.campusName} campusID={item._id}/>
+            return <Button key={index}
+                      campusID={item._id}
+                      text={item.campusName}
+                      setSelectedCampus={setSelectedCampus}/>
           }) : <></>
         }
       </CLContainer>

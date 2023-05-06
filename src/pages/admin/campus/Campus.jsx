@@ -35,6 +35,8 @@ const WrappedInput = ({ globalLoader }) => {
 
 const Campus = () => {
   const [campusList, campusListLoader] = useState([]);
+  const [selectedCampus, setSelectedCampus] = useState('');
+  const [campusTarget, campusTargetSetter] = useState({});
   const [departmentList, departmentListLoader] = useState([]);
 
   // retrieves all the campuses and loads it
@@ -51,14 +53,26 @@ const Campus = () => {
     retrieveData();
   }, []);
 
+  // for keeping track of which campus is selected
+  useEffect(() => {
+    campusList.forEach(campus => {
+      if (campus._id == selectedCampus) {
+        console.log(campus);
+        campusTargetSetter(campus);
+      }
+    });
+  });
+
   return (
     <CampusWrapper>
       <SideCampusListWrapper>
-        <DynCampusLoader campusList={campusList}/>
-        <WrappedInput globalLoader={campusListLoader}/>
+        <DynCampusLoader
+          campusList={campusList}
+          setSelectedCampus={setSelectedCampus} />
+        <WrappedInput globalLoader={campusListLoader} />
       </SideCampusListWrapper>
       <SideDepartmentListWrapper>
-        <DynDepartmentLoader/>
+        <DynDepartmentLoader campusObj={campusTarget}/>
         <WrappedInput globalLoader={departmentListLoader}/>
       </SideDepartmentListWrapper>
     </CampusWrapper>
