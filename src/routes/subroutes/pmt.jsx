@@ -1,6 +1,5 @@
-import Preview from '../../pages/PMT/preview/Preview';
-import Edit from '../../pages/PMT/edit/Edit';
 import Landing from '../../pages/PMT/Landing/components/Landing';
+import Index from '../../pages/PMT/Index';
 const pmtRoutes = [
   {
     index: true,
@@ -8,11 +7,7 @@ const pmtRoutes = [
   },
   {
     path: 'preview',
-    element: <Preview />,
-  },
-  {
-    path: 'edit',
-    element: <Edit />,
+    element: <Index />,
   },
 ];
 
