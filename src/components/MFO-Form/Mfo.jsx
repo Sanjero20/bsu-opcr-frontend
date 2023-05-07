@@ -1,20 +1,30 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import FormHeader from './FormHeader/FormHeader';
 import Guidelines from './Guidelines/Guidelines';
 import FormBody from './FormBody/FormBody';
 
+export const TargetContext = React.createContext();
+
 function Mform({ targets }) {
   return (
-    <Container id='mfo-form'>
-      <FormHeader />
-      <Guidelines />
-      <FormBody targets={targets} />
-    </Container>
+    <TargetContext.Provider value={targets}>
+      <Container id="mfo-form">
+        <FormHeader />
+        <Guidelines />
+        <FormBody />
+      </Container>
+    </TargetContext.Provider>
   );
 }
 
 export default Mform;
+
+Mform.propTypes = {
+  targets: PropTypes.array,
+};
 
 const Container = styled.div`
   background-color: white;

@@ -1,14 +1,16 @@
-import PropTypes from 'prop-types';
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
+
 import styled from 'styled-components';
 import theme from '../../../styles/theme';
 
-function Content({ data }) {
-  console.log(data);
+import { TargetContext } from '../Mfo';
+
+function Content() {
+  const data = useContext(TargetContext);
 
   return (
     <tbody>
-      <Title className='no-pad'>
+      <Title className="no-pad">
         <td colSpan={10}>{}</td>
       </Title>
 
@@ -59,11 +61,6 @@ function Content({ data }) {
 }
 
 export default Content;
-
-// Prop Validation
-Content.propTypes = {
-  data: PropTypes.array,
-};
 
 // Styles
 const Title = styled.tr`
