@@ -24,6 +24,7 @@ export const Button = styled.button`
 
   &:disabled {
     background-color: ${theme.gray};
+    pointer-events: none;
     cursor: default;
   }
 `;
