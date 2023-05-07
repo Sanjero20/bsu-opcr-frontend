@@ -17,7 +17,7 @@ export const Container = styled(Con)`
 
 export const Depts = styled.button`
   height: 250px;
-  max-width: 300px;
+  width: 300px;
   border-radius: 50px;
   background-color: white;
   display: flex;
@@ -35,11 +35,11 @@ export const Depts = styled.button`
 `;
 
 export const Divider = styled.div`
-  display: grid;
+  flex-wrap: wrap;
+  display: flex;
   overflow-y: auto;
   width: 100%;
-  justify-content: center;
-  grid-template-columns: repeat(4, 20%);
+  height: 100%;
   padding-bottom: 20px;
   gap: 70px;
 `;
