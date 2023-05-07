@@ -4,9 +4,11 @@ import styled from 'styled-components';
 import theme from '../../../styles/theme';
 
 function Content({ data }) {
+  console.log(data);
+
   return (
     <tbody>
-      <Title className="no-pad">
+      <Title className='no-pad'>
         <td colSpan={10}>{}</td>
       </Title>
 

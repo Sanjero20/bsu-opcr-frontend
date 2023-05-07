@@ -1,13 +1,9 @@
 import Landing from '../../pages/PMT/Landing/components/Landing';
-import Index from '../../pages/PMT/Index';
+import Pmt from '../../pages/PMT/index';
 const pmtRoutes = [
   {
     index: true,
-    element: <Landing />,
-  },
-  {
-    path: 'preview',
-    element: <Index />,
+    element: <Pmt />,
   },
 ];
 

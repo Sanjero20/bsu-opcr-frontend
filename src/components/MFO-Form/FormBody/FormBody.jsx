@@ -9,12 +9,7 @@ import SignatureBlock from '../Footer/SignatureBlock';
 import Legend from '../Footer/Legend';
 import TableBr from './TableBr';
 
-// Context
-import { TargetContext } from '../../../pages/head/preview/Preview';
-
-function FormBody() {
-  const targets = useContext(TargetContext);
-
+function FormBody({ targets }) {
   return (
     <Table>
       <Header />

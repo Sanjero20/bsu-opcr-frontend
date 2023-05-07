@@ -4,12 +4,12 @@ import FormHeader from './FormHeader/FormHeader';
 import Guidelines from './Guidelines/Guidelines';
 import FormBody from './FormBody/FormBody';
 
-function Mform() {
+function Mform({ targets }) {
   return (
-    <Container id="mfo-form">
+    <Container id='mfo-form'>
       <FormHeader />
       <Guidelines />
-      <FormBody />
+      <FormBody targets={targets} />
     </Container>
   );
 }

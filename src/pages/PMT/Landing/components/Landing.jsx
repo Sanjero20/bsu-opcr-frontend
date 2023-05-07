@@ -1,30 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
 import { Container } from './Styled';
 import { Input, Depts, Divider } from './Styled';
-import { useNavigate } from 'react-router-dom';
+
+import { DepartmentContext } from '../../index';
 
 function Landing() {
-  const navigate = useNavigate();
-  const arr = [
-    { name: 'hey' },
-    { name: 'kenn' },
-    { name: 'joshua' },
-    { name: 'joshua' },
-    { name: 'joshua' },
-    { name: 'joshua' },
-    { name: 'kenn' },
-    { name: 'joshua' },
-    { name: 'joshua' },
-    { name: 'joshua' },
-    { name: 'joshua' },
-  ];
-  const Mapped = arr.map((nam) => (
-    <Depts onClick={() => navigate('./preview')}>{nam.name} </Depts>
-  ));
+  const { department, changeMode, changeDept } = useContext(DepartmentContext);
+
+  const selectDepartment = (id) => {
+    changeMode('preview');
+
+    console.log(id, department);
+
+    const selected = department.filter((dept) => dept._id === id);
+    changeDept(selected[0]);
+  };
+
   return (
     <Container>
       <Input placeholder='Search' />
-      <Divider>{Mapped}</Divider>
+      <Divider>
+        {department.length != 0 &&
+          department.map((nam) => (
+            <Depts key={nam._id} onClick={() => selectDepartment(nam._id)}>
+              {nam.name}
+            </Depts>
+          ))}
+      </Divider>
     </Container>
   );
 }
