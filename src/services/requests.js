@@ -98,3 +98,10 @@ export const retrieveHeadOpcr = async () => {
 export const retrieveCampuses = async () => {
   return await getAPIRequest('/admin/read/campus');
 };
+
+// adds the new campus to the list
+export const addCampusData = async (campusData) => {
+  paramChecker(['campusName', 'departmentDetails'], campusData);
+  arrayParamChecker(['name'], campusData.departmentDetails, 'deptDetails');
+  return await postAPIRequest('/admin/create/campus', campusData);
+};
