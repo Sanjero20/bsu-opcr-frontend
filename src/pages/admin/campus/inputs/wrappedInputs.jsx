@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { DivCS, Input, AddButton, SaveButton } from "../Campus.styled";
 import { v4 as uuid } from "uuid";
+import { addCampusData } from "../../../../services/requests";
 
 // this input adds a new campus from the list
 export const WrappedCampusInput = ({ campusLoader }) => {
@@ -59,6 +60,17 @@ export const WrappedDepartmentInput = (props) => {
     }
   };
 
+  const saveAddedData = async () => {
+    campusList[campusIndex].isLocal = false;
+    try {
+      const response = await addCampusData(campusList[campusIndex]);
+      if (response.added)
+        window.location.reload();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <DivCS>
         <Input
@@ -66,7 +78,9 @@ export const WrappedDepartmentInput = (props) => {
           value={addedInput}
           onChange={charAppend}/>
         <AddButton onClick={loadGlobalDepartment}>Create</AddButton>
-        <SaveButton disabled={ (campusIndex >= 0 && campusList[campusIndex].isLocal) ? false : true }>Save</SaveButton>
+        <SaveButton
+          disabled={ (campusIndex >= 0 && campusList[campusIndex].isLocal) ? false : true }
+          onClick={saveAddedData}>Save</SaveButton>
     </DivCS>
   );
 };
