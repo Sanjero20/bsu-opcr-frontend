@@ -12,8 +12,8 @@ const DynDepartmentLoader = (props) => {
       <CLHeader2>Departments</CLHeader2>
       {
         (departments && departments.length > 0) ?
-        departments.map(item => {
-          return <CPHighlight>{item.name}</CPHighlight>
+        departments.map((item, index) => {
+          return <CPHighlight key={index}>{item.name}</CPHighlight>
         }) : <></>
       }
     </DivMW>

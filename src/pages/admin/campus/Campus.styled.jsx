@@ -55,11 +55,14 @@ export const CLButton = styled.button`
   width: 100%;
   padding: 0.3rem;
   text-align: left;
+`;
 
-  &:focus {
-    color: ${theme.red};
-    font-weight: bold;
-  }
+export const CLTmpButton = styled.button`
+  background-color: transparent;
+  color: gray;
+  width: 100%;
+  padding: 0.3rem;
+  text-align: left;
 `;
 
 export const AddButton = styled.button`
@@ -72,6 +75,16 @@ export const AddButton = styled.button`
   color: white;
 `;
 
+export const SaveButton = styled(AddButton)`
+  border: 1px solid ${theme.yellow};
+  background-color: ${theme.yellow};
+
+  :disabled {
+    background-color: #b69a63;
+    border: 1px solid #b69a63;
+  }
+`;
+
 export const Input = styled.input`
   background-color: white;
   border: 1px solid black;
@@ -79,6 +92,10 @@ export const Input = styled.input`
   font-size: 10pt;
   padding: 0.3rem;
   width: calc(95% - 5rem);
+
+  :disabled {
+    background-color: #e0e1dc;
+  }
 `;
 
 ///////////////////
@@ -98,6 +115,6 @@ export const CLHeader2 = styled(CLHeader1)`
 
 export const CPHighlight = styled.p`
   cursor: pointer;
-  font-size: 13pt;
+  font-size: 12pt;
   padding: 0.5rem;
 `;
