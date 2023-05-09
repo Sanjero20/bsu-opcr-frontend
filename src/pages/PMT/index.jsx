@@ -1,8 +1,9 @@
 import { useEffect, useState, createContext } from 'react';
 
 import Preview from './preview/Preview';
-import { retrievePmtOpcr } from '../../services/requests';
 import Landing from './Landing/components/Landing';
+
+import { retrievePmtOpcr } from '../../services/requests';
 
 export const DepartmentContext = createContext();
 
@@ -29,12 +30,10 @@ function Pmt() {
   const changeDept = (dept) => {
     setselectedDepartment(dept);
   };
-  console.log(selectedDepartment);
+
   return (
     <DepartmentContext.Provider value={{ department, changeMode, changeDept }}>
       {mode == 'landing' && <Landing />}
-
-      {mode == 'edit' && <>akjdfakjldf</>}
 
       {mode == 'preview' && <Preview targets={selectedDepartment.opcr} />}
     </DepartmentContext.Provider>

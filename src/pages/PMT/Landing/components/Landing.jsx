@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 
 import { Container } from './Styled';
 import { Input, Depts, Divider } from './Styled';
@@ -11,9 +11,7 @@ function Landing() {
   const selectDepartment = (id) => {
     changeMode('preview');
 
-    console.log(id, department);
-
-    const selected = department.filter((dept) => dept._id === id);
+    const selected = department.filter((dept) => dept._id === id); ///condition lang yan
     changeDept(selected[0]);
   };
 
