@@ -117,7 +117,7 @@ export const retrieveHeadAccount = async () => {
 
 // retrieves the pmt account data
 export const retrievePmtAccount = async () => {
-  return await getAPIRequest('/admin/read/account/head');
+  return await getAPIRequest('/admin/read/account/pmt');
 };
 
 // adds the new campus to the list

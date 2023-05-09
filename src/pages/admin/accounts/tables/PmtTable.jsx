@@ -1,6 +1,16 @@
 import { BigP, DropDown, SmallP, WrapperGrid3 } from "../Accounts.styled";
 
-const PmtTable = () => {
+const TableElement = ({ account }) => {
+  return (
+    <WrapperGrid3>
+      <SmallP>{account.username}</SmallP>
+      <DropDown/>
+      <></>
+    </WrapperGrid3>
+  );
+};
+
+const PmtTable = ({ data }) => {
   return (
     <div style={{height: '50%'}}>
       <WrapperGrid3>
@@ -9,11 +19,12 @@ const PmtTable = () => {
         <></>
       </WrapperGrid3>
       <hr /><br/>
-      <WrapperGrid3>
-        <SmallP>Dean</SmallP>
-        <DropDown type="button"/>
-        <></>
-      </WrapperGrid3>
+      {
+        (data.length) ?
+        data.map(item => {
+          return <TableElement account={item}/>
+        }) : <></>
+      }
     </div>
   );
 };

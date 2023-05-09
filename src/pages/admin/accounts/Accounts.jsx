@@ -33,7 +33,7 @@ const Accounts = () => {
       </SideCampusListWrapper>
       <SideDepartmentListWrapper>
         <HeadTable data={headAccList}/>
-        <PmtTable/>
+        <PmtTable data={pmtAccList}/>
       </SideDepartmentListWrapper>
     </CampusWrapper>
   );
