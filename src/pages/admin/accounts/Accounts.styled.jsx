@@ -19,6 +19,13 @@ export const Input = styled.input`
   margin-bottom: 0.8rem;
 `;
 
+export const DropDown = styled.select`
+  display: block;
+  margin: 0 auto;
+  padding: 0.1rem;
+  width: 80%;
+`;
+
 export const CreateButton = styled.button`
   background-color: ${theme.red};
   padding-top: 0.2rem;

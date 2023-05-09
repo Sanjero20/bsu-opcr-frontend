@@ -9,10 +9,8 @@ const Accounts = () => {
     <CampusWrapper>
       <SideCampusListWrapper>
         <div>
-          <CLHeader1>Create Account</CLHeader1>
-          <br/>
-          <DynForm title="Head"/>
-          <br/><br/>
+          <CLHeader1>Create Account</CLHeader1><br/>
+          <DynForm title="Head"/><br/><br/>
           <DynForm title="PMT"/>
         </div>
       </SideCampusListWrapper>

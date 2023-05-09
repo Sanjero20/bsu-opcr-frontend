@@ -1,4 +1,4 @@
-import { BigP, SmallP, WrapperGrid3 } from "../Accounts.styled";
+import { BigP, DropDown, SmallP, WrapperGrid3 } from "../Accounts.styled";
 
 const PmtTable = () => {
   return (
@@ -11,7 +11,7 @@ const PmtTable = () => {
       <hr /><br/>
       <WrapperGrid3>
         <SmallP>Dean</SmallP>
-        <SmallP>[Campus]</SmallP>
+        <DropDown type="button"/>
         <></>
       </WrapperGrid3>
     </div>
