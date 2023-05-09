@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 
 import { ButtonContainer, Button } from '../../../components/ui/Button.styled';
 import { Container } from '../../../components/ui/Container.styled';
-
+import { SubButton } from '../Landing/components/Styled';
 import Mform from '../../../components/MFO-Form/Mfo';
 
 import { DepartmentContext } from '../index';
@@ -17,9 +17,17 @@ function Preview({ targets }) {
     <Container>
       <Mform targets={targets} />
       <ButtonContainer>
-        <Button onClick={console.log('hey')}>Submit</Button>
+        <SubButton onClick={() => changeMode('landing')}> Back </SubButton>
+        <Button yellow onClick={() => changeMode('landing')}>
+          {' '}
+          Edit{' '}
+        </Button>
+        <Button onClick={() => changeMode('landing')}> Decline </Button>
 
-        <Button onClick={() => changeMode('landing')}> Back </Button>
+        <SubButton green onClick={() => changeMode('landing')}>
+          {' '}
+          Accept{' '}
+        </SubButton>
       </ButtonContainer>
     </Container>
   );

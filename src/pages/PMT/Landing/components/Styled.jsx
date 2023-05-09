@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button } from '../../../../components/ui/Button.styled';
 import { Container as Con } from '../../../../components/ui/Container.styled';
 export const Input = styled.input`
   color: black;
@@ -42,4 +43,8 @@ export const Divider = styled.div`
   height: 100%;
   padding-bottom: 20px;
   gap: 70px;
+`;
+
+export const SubButton = styled(Button)`
+  background-color: ${(props) => (props.green ? 'green' : '#AEAEAE')};
 `;
