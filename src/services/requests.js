@@ -110,6 +110,16 @@ export const retrieveCampuses = async () => {
   return await getAPIRequest('/admin/read/campus');
 };
 
+// retrieves the head account data
+export const retrieveHeadAccount = async () => {
+  return await getAPIRequest('/admin/read/account/head');
+};
+
+// retrieves the pmt account data
+export const retrievePmtAccount = async () => {
+  return await getAPIRequest('/admin/read/account/head');
+};
+
 // adds the new campus to the list
 export const addCampusData = async (campusData) => {
   paramChecker(['campusName', 'departmentDetails'], campusData);
