@@ -3,8 +3,10 @@ import theme from "../../../styles/theme";
 
 export const BigP = styled.p`
   font-size: 14pt;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+`;
+
+export const SmallP = styled.p`
+  font-size: 12pt;
 `;
 
 export const Input = styled.input`
@@ -21,7 +23,28 @@ export const CreateButton = styled.button`
   background-color: ${theme.red};
   padding-top: 0.2rem;
   padding-bottom: 0.2rem;
+  border: 1px solid ${theme.red};
   border-radius: 5px;
   color: white;
   width: 50%;
+
+  &:active {
+    background-color: white;
+    border: 1px solid black;
+    color: ${theme.red};
+  }
+`;
+
+export const WrapperGrid3 = styled.div`
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+  text-align: center;
+  width: 100%;
+`;
+
+export const WrapperGrid2 = styled.div`
+  display: grid;
+  grid-template-columns: 50% 50%;
+  text-align: center;
+  width: 100%;
 `;

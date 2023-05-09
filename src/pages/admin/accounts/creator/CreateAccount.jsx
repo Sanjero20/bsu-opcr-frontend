@@ -5,7 +5,7 @@ const DynForm = (props) => {
 
   return (
     <div>
-      <BigP>{title}</BigP>
+      <BigP>{title}</BigP><br/>
       <Input placeholder="Username"/>
       <Input type="password" placeholder="Password"/>
       <Input type="password" placeholder="Confirm Password"/>
