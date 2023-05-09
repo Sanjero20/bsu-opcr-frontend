@@ -3,6 +3,7 @@ import { Fragment, useContext } from 'react';
 import styled from 'styled-components';
 import theme from '../../../styles/theme';
 
+import TextareaAutosize from 'react-textarea-autosize';
 import { TargetContext } from '../Mfo';
 
 function Content() {
@@ -49,7 +50,9 @@ function Content() {
                     <td />
 
                     {/* Remarks */}
-                    <td></td>
+                    <td>
+                      <TextArea />
+                    </td>
                   </Contents>
                 );
               })}
@@ -80,4 +83,9 @@ const Contents = styled.tr`
   pre {
     white-space: pre-wrap;
   }
+`;
+
+const TextArea = styled(TextareaAutosize)`
+  resize: none;
+  padding: 0.25em;
 `;
