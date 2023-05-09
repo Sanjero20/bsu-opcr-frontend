@@ -22,7 +22,7 @@ const PmtTable = ({ data }) => {
       {
         (data.length) ?
         data.map(item => {
-          return <TableElement account={item}/>
+          return <TableElement key={item._id} account={item}/>
         }) : <></>
       }
     </div>

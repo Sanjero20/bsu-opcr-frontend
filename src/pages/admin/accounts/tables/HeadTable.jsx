@@ -1,16 +1,33 @@
+import { useState } from "react";
 import { BigP, SmallP, WrapperGrid3, DropDown } from "../Accounts.styled";
+import { useEffect } from "react";
 
-const TableElement = ({ account }) => {
+const TableElement = ({ account, campus, defaultCID }) => {
+  const [targetCampusID, setCampusTarget] = useState(defaultCID);
+
+  const setCampusID = (val) => {
+    setCampusTarget(val.target.value);
+  };
+
   return (
     <WrapperGrid3>
       <SmallP>{account.username}</SmallP>
-      <DropDown/>
+      <DropDown onInput={setCampusID}>
+        {
+          (campus.length > 0) ?
+          campus.map(campusdata => {
+            if (campusdata._id == defaultCID)
+              return <option key={campusdata._id} value={campusdata._id} selected={true}>{campusdata.campusName}</option>
+            return <option key={campusdata._id} value={campusdata._id}>{campusdata.campusName}</option>
+          }) : <></>
+        }
+      </DropDown>
       <DropDown/>
     </WrapperGrid3>
   );
 };
 
-const HeadTable = ({ data }) => {
+const HeadTable = ({ campusData, data }) => {
   return (
     <div style={{height: '50%'}}>
       <WrapperGrid3>
@@ -22,7 +39,11 @@ const HeadTable = ({ data }) => {
       {
         (data.length > 0) ?
         data.map(item => {
-          return <TableElement key={item._id} account={item}/>
+          return <TableElement
+                    key={item._id}
+                    account={item}
+                    campus={campusData}
+                    defaultCID={item.campusAssigned}/>
         }) : <></>
       }
     </div>

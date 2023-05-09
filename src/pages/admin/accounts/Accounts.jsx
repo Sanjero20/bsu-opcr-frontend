@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { CampusWrapper, SideCampusListWrapper, SideDepartmentListWrapper } from "../campus/Campus.styled";
-import { retrievePmtAccount, retrieveHeadAccount } from "../../../services/requests";
+import { retrievePmtAccount, retrieveHeadAccount, retrieveCampuses } from "../../../services/requests";
 import { CLHeader1 } from "../campus/Campus.styled";
 import DynForm from "./creator/CreateAccount";
 import HeadTable from "./tables/HeadTable";
@@ -15,8 +15,11 @@ const Accounts = () => {
     async function getAccounts() {
       const headAcc = await retrieveHeadAccount();
       const pmtAcc = await retrievePmtAccount();
+      const campusDat = await retrieveCampuses();
+
       pmtAccListLoader(pmtAcc.accounts);
       headAccListLoader(headAcc.accounts);
+      campusListLoader(campusDat.campus);
     }
     getAccounts();
 
@@ -32,8 +35,8 @@ const Accounts = () => {
         </div>
       </SideCampusListWrapper>
       <SideDepartmentListWrapper>
-        <HeadTable data={headAccList}/>
-        <PmtTable data={pmtAccList}/>
+        <HeadTable data={headAccList} campusData={campusList}/>
+        <PmtTable data={pmtAccList} campusData={campusList}/>
       </SideDepartmentListWrapper>
     </CampusWrapper>
   );
