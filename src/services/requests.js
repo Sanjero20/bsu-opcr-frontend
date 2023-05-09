@@ -31,6 +31,17 @@ const postAPIRequest = async (path, body) => {
   return response.json();
 };
 
+// modified delete request for api
+const deleteAPIRequest = async (path) => {
+  const response = await fetch(`${apiAddr}${path}`, {
+    method: 'DELETE',
+    credentials: 'include',
+    headers: { 'Content-type': 'application/json' }
+  });
+
+  return response.json();
+}
+
 // modified post request for root path
 const postRequest = async (path, body) => {
   const response = await fetch(`${routeAddr}${path}`, {
@@ -104,4 +115,9 @@ export const addCampusData = async (campusData) => {
   paramChecker(['campusName', 'departmentDetails'], campusData);
   arrayParamChecker(['name'], campusData.departmentDetails, 'deptDetails');
   return await postAPIRequest('/admin/create/campus', campusData);
+};
+
+// deletes a campus by id
+export const deleteCampus = async (campusID) => {
+  return await deleteAPIRequest(`/admin/delete/campus/${campusID}`);
 };

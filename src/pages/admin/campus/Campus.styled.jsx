@@ -53,7 +53,7 @@ export const DivCS = styled(DivMW)`
 export const CLButton = styled.button`
   background-color: transparent;
   width: 100%;
-  padding: 0.3rem;
+  padding: 0.5rem;
   text-align: left;
 `;
 
@@ -61,7 +61,7 @@ export const CLTmpButton = styled.button`
   background-color: transparent;
   color: gray;
   width: 100%;
-  padding: 0.3rem;
+  padding: 0.5rem;
   text-align: left;
 `;
 

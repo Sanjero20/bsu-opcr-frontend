@@ -56,7 +56,7 @@ const Campus = () => {
         <WrappedCampusInput campusLoader={campusListLoader}/>
       </SideCampusListWrapper>
       <SideDepartmentListWrapper>
-        <DynDepartmentLoader campusObj={campusTarget}/>
+        <DynDepartmentLoader selectedTarget={selectedCampus} campusObj={campusTarget}/>
         <WrappedDepartmentInput selectedTargetID={selectedCampus}
           campusID={selectedCampus}
           campusList={campusList}
