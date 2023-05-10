@@ -6,29 +6,35 @@ import { Container } from './Departments.styled';
 import { Input, Depts, Divider } from './Departments.styled';
 
 function Departments({ departments }) {
-  const [searchText, setSearchText] = useState('');
+  const [search, setSearchText] = useState('');
 
   const navigate = useNavigate();
 
-  const handleSearch = (e) => {
-    setSearchText(e.target.value);
-  };
+  // const handleSearch = (e) => {
+  //   setSearchText(e.target.value);
+  // };
 
   return (
     <Container>
       <Input
-        placeholder="Search"
-        value={searchText}
-        onChange={(e) => handleSearch(e)}
+        placeholder='Search'
+        value={search}
+        onChange={(e) => setSearchText(e.target.value)}
       />
 
       <Divider>
         {departments.length != 0 &&
-          departments.map((dept) => (
-            <Depts key={dept._id} onClick={() => navigate(dept._id)}>
-              {dept.name}
-            </Depts>
-          ))}
+          departments
+            .filter((dept) => {
+              return search.toLocaleLowerCase() === ''
+                ? dept
+                : dept.name.toLowerCase().includes(search);
+            })
+            .map((dept) => (
+              <Depts key={dept._id} onClick={() => navigate(dept._id)}>
+                {dept.name}
+              </Depts>
+            ))}
       </Divider>
     </Container>
   );

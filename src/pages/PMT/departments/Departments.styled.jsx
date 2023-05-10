@@ -14,15 +14,16 @@ export const Input = styled.input`
 
 export const Container = styled(Con)`
   gap: 50px;
+
   align-items: center;
 `;
 
 export const Depts = styled.button`
   height: 250px;
+  max-width: 420px;
   border-radius: 25px;
   background-color: white;
   display: flex;
-
   justify-content: center;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
