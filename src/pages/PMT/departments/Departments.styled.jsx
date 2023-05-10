@@ -13,22 +13,23 @@ export const Input = styled.input`
 `;
 
 export const Container = styled(Con)`
-  gap: 50px;
+  gap: 60px;
 
   align-items: center;
 `;
 
 export const Depts = styled.button`
+  font-weight: bold;
   height: 250px;
-  max-width: 420px;
+  max-width: 400px;
   border-radius: 25px;
   background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 24px;
-  letter-spacing: 0.5rem;
+  font-size: 22px;
+  letter-spacing: 0.3rem;
   background-color: #853030;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
     rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
@@ -51,7 +52,7 @@ export const Divider = styled.div`
   height: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2em;
+  gap: 5em;
   padding-bottom: 2em;
 `;
 
