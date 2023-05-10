@@ -75,17 +75,13 @@ function Preview() {
     });
 
     const opcrDetails = { departmentID: deptID, targets: filtered };
-
-    console.log(opcrDetails);
-
     const response = await declineOpcr(opcrDetails);
 
     console.log(response);
   };
 
   const acceptForm = async () => {
-    const response = await acceptOpcr({ deptID });
-
+    const response = await acceptOpcr({ departmentID: deptID });
     console.log(response);
   };
 
