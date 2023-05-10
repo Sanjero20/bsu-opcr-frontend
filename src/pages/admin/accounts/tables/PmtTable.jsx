@@ -1,6 +1,20 @@
+import { assignPmtCampus } from "../../../../services/requests";
 import { BigP, DropDown, SmallP, SmallPu, WrapperGrid3 } from "../Accounts.styled";
+import { useState } from "react";
 
 const TableElement = ({ account, data, defaultCID }) => {
+  const [targetCID, setTargetCID] = useState(defaultCID);
+
+  const setTargetCampus = async (val) => {
+    setTargetCID(val.target.value);
+    const response = await assignPmtCampus({
+      campusID: val.target.value,
+      accountID: account._id
+    });
+
+    if (response.assigned) window.location.reload();
+  };
+
   return (
     <WrapperGrid3>
       { 
@@ -8,7 +22,7 @@ const TableElement = ({ account, data, defaultCID }) => {
         ? <SmallP>{account.username}</SmallP>
         : <SmallPu>{account.username}</SmallPu>
       }
-      <DropDown defaultValue={defaultCID}>
+      <DropDown onInput={setTargetCampus} defaultValue={targetCID}>
         {
           (data && (data.length > 0)) ?
           data.map(campusdata => {

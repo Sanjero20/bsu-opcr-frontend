@@ -10,24 +10,24 @@ const TableElement = ({ account, campus, defaultCID, defaultDID }) => {
 
   const setCampusID = (val) => {
     setTargetCID(val.target.value);
+    const data = campus.find(item => item._id == val.target.value);
+    setTargetDepartment(data.departments);
   };
 
   const setDepartmentID = async (val) => {
-    setTargetDID(val.target.value);
+    await setTargetDID(val.target.value);
     const response = await assignHeadOffice({
       campusID: targetCID,
-      departmentID: targetDID,
+      departmentID: val.target.value,
       accountID: account._id
     });
-
-    if (response.assigned) window.location.reload();
   };
 
   useEffect(() => {
     // for loading the options for default departments
     const data = campus.find(item => item._id == defaultCID);
     if (data) setTargetDepartment(data.departments);
-  });
+  }, []);
 
   return (
     <WrapperGrid3>
@@ -40,10 +40,12 @@ const TableElement = ({ account, campus, defaultCID, defaultDID }) => {
           }) : <></>
         }
       </DropDown>
-      <DropDown onInput={setDepartmentID} defaultValue={targetDID}>
+      <DropDown onInput={setDepartmentID}>
         {
           (targetDepartment.length > 0) ?
           targetDepartment.map(dept => {
+            if (dept._id == targetDID)
+              return <option key={dept._id} value={dept._id} selected={true}>{dept.name}</option>
             return <option key={dept._id} value={dept._id}>{dept.name}</option>
           }) : <></>
         }

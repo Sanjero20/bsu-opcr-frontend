@@ -142,3 +142,9 @@ export const assignHeadOffice = async (accOfficeDetails) => {
   paramChecker(['campusID', 'departmentID', 'accountID'], accOfficeDetails);
   return await postAPIRequest('/admin/assign/account/head', accOfficeDetails);
 };
+
+// assigns a campus to the pmt account
+export const assignPmtCampus = async (accCampusDetails) => {
+  paramChecker(['campusID', 'accountID'], accCampusDetails);
+  return await postAPIRequest('/admin/assign/account/pmt', accCampusDetails);
+};
