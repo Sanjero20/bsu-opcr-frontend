@@ -1,23 +1,38 @@
 import { useState } from "react";
-import { BigP, SmallP, WrapperGrid3, DropDown } from "../Accounts.styled";
+import { BigP, SmallP, WrapperGrid3, DropDown, TableScrollableWrapper, SaveButton } from "../Accounts.styled";
 import { useEffect } from "react";
+import { assignHeadOffice } from "../../../../services/requests";
 
-const TableElement = ({ account, campus, defaultCID, defaultDID, id }) => {
+const TableElement = ({ account, campus, defaultCID, defaultDID }) => {
+  const [targetCID, setTargetCID] = useState(defaultCID);
+  const [targetDID, setTargetDID] = useState(defaultDID);
   const [targetDepartment, setTargetDepartment] = useState([]);
 
   const setCampusID = (val) => {
-    setCampusTarget(val.target.value);
+    setTargetCID(val.target.value);
+  };
+
+  const setDepartmentID = async (val) => {
+    setTargetDID(val.target.value);
+    const response = await assignHeadOffice({
+      campusID: targetCID,
+      departmentID: targetDID,
+      accountID: account._id
+    });
+
+    if (response.assigned) window.location.reload();
   };
 
   useEffect(() => {
+    // for loading the options for default departments
     const data = campus.find(item => item._id == defaultCID);
-    setTargetDepartment(data.departments);
+    if (data) setTargetDepartment(data.departments);
   });
 
   return (
     <WrapperGrid3>
       <SmallP>{account.username}</SmallP>
-      <DropDown onInput={setCampusID} defaultValue={defaultCID}>
+      <DropDown onInput={setCampusID} defaultValue={targetCID}>
         {
           (campus.length > 0) ?
           campus.map(campusdata => {
@@ -25,12 +40,11 @@ const TableElement = ({ account, campus, defaultCID, defaultDID, id }) => {
           }) : <></>
         }
       </DropDown>
-      <DropDown defaultValue={defaultDID}>
+      <DropDown onInput={setDepartmentID} defaultValue={targetDID}>
         {
           (targetDepartment.length > 0) ?
           targetDepartment.map(dept => {
-            // console.log(dept);
-            return <option key={dept._id} value={dept._ud}>{dept.name}</option>
+            return <option key={dept._id} value={dept._id}>{dept.name}</option>
           }) : <></>
         }
       </DropDown>
@@ -47,18 +61,20 @@ const HeadTable = ({ campusData, data }) => {
         <BigP>Department</BigP>
       </WrapperGrid3>
       <hr /><br/>
-      {
-        (data.length > 0) ?
-        data.map(item => {
-          return <TableElement
-                    key={item._id}
-                    id={item._id}
-                    account={item}
-                    campus={campusData}
-                    defaultDID={item.officeAssigned}
-                    defaultCID={item.campusAssigned}/>
-        }) : <></>
-      }
+      <TableScrollableWrapper>
+        {
+          (data.length > 0) ?
+          data.map(item => {
+            return <TableElement
+                      key={item._id}
+                      id={item._id}
+                      account={item}
+                      campus={campusData}
+                      defaultDID={(item.officeAssigned) ? item.officeAssigned : ''}
+                      defaultCID={(item.campusAssigned) ? item.campusAssigned : ''}/>
+          }) : <></>
+        }
+      </TableScrollableWrapper>
     </div>
   );
 };

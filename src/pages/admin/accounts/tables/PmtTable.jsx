@@ -1,14 +1,18 @@
-import { BigP, DropDown, SmallP, WrapperGrid3 } from "../Accounts.styled";
+import { BigP, DropDown, SmallP, SmallPu, WrapperGrid3 } from "../Accounts.styled";
 
 const TableElement = ({ account, data, defaultCID }) => {
   return (
     <WrapperGrid3>
-      <SmallP>{account.username}</SmallP>
+      { 
+        (defaultCID != '')
+        ? <SmallP>{account.username}</SmallP>
+        : <SmallPu>{account.username}</SmallPu>
+      }
       <DropDown defaultValue={defaultCID}>
         {
           (data && (data.length > 0)) ?
           data.map(campusdata => {
-            return <option value={campusdata._id}>{campusdata.campusName}</option>
+            return <option key={campusdata._id} value={campusdata._id}>{campusdata.campusName}</option>
           }) : <></>
         }
       </DropDown>
@@ -32,7 +36,7 @@ const PmtTable = ({ data, campusData }) => {
           return <TableElement
                     key={item._id}
                     data={campusData}
-                    defaultCID={item.campusAssigned}
+                    defaultCID={(item.campusAssigned) ? item.campusAssigned : ''}
                     account={item}/>
         }) : <></>
       }
