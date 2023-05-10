@@ -22,7 +22,7 @@ function Content() {
           return (
             <Fragment key={_id}>
               {keySuccess.map((indicator, index) => {
-                const { _id, successIndicator, comments } = indicator;
+                const { _id, successIndicator, comment } = indicator;
 
                 return (
                   <Contents key={_id}>
@@ -58,10 +58,10 @@ function Content() {
                     <td>
                       {/* If Head display comments, else show editable comment field */}
                       {!pmt ? (
-                        <pre> {comments} </pre>
+                        <pre> {comment} </pre>
                       ) : (
                         <TextArea
-                          value={comments}
+                          value={comment}
                           onChange={(e) =>
                             handleComments(e, targetObj._id, indicator._id)
                           }

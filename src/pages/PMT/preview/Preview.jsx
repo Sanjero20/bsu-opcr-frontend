@@ -7,7 +7,11 @@ import { SubButton } from '../departments/Departments.styled';
 
 import Mform from '../../../components/MFO-Form/Mfo';
 
-import { retrieveDepartmentOpcr } from '../../../services/requests';
+import {
+  retrieveDepartmentOpcr,
+  acceptOpcr,
+  declineOpcr,
+} from '../../../services/requests';
 
 function Preview() {
   const [targets, setTargets] = useState([]);
@@ -55,6 +59,36 @@ function Preview() {
     setTargets(updatedComments);
   };
 
+  const declineForm = async () => {
+    const filtered = targets.map((target) => {
+      const filteredIndicators = target.keySuccess.map((indicator) => {
+        return {
+          id: indicator._id,
+          comment: indicator.comment,
+        };
+      });
+
+      return {
+        targetID: target._id,
+        successIDs: [...filteredIndicators],
+      };
+    });
+
+    const opcrDetails = { departmentID: deptID, targets: filtered };
+
+    console.log(opcrDetails);
+
+    const response = await declineOpcr(opcrDetails);
+
+    console.log(response);
+  };
+
+  const acceptForm = async () => {
+    const response = await acceptOpcr({ deptID });
+
+    console.log(response);
+  };
+
   return (
     <Container>
       <Mform targets={targets} handleComments={handleComments} pmt />
@@ -63,8 +97,11 @@ function Preview() {
         <Button yellow onClick={() => navigate('/pmt')}>
           Back
         </Button>
-        <Button> Decline </Button>
-        <SubButton green> Accept </SubButton>
+        <Button onClick={declineForm}> Decline </Button>
+        <SubButton green onClick={acceptForm}>
+          {' '}
+          Accept{' '}
+        </SubButton>
       </ButtonContainer>
     </Container>
   );
