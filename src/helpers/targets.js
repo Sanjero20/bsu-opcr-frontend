@@ -18,5 +18,6 @@ export const createSuccessIndicatorObj = () => {
     _id: uuid(),
     keyResult: '',
     successIndicator: '',
+    comments: '',
   };
 };

@@ -7,7 +7,7 @@ import TextareaAutosize from 'react-textarea-autosize';
 import { TargetContext } from '../Mfo';
 
 function Content() {
-  const data = useContext(TargetContext);
+  const { targets, pmt } = useContext(TargetContext);
 
   return (
     <tbody>
@@ -15,14 +15,16 @@ function Content() {
         <td colSpan={10}>{}</td>
       </Title>
 
-      {data &&
-        data.map((obj) => {
+      {targets &&
+        targets.map((obj) => {
           const { _id, target, keySuccess } = obj;
 
           return (
             <Fragment key={_id}>
               {keySuccess.map((indicator, index) => {
-                const { _id, successIndicator } = indicator;
+                console.log(indicator);
+
+                const { _id, successIndicator, comments } = indicator;
 
                 return (
                   <Contents key={_id}>
@@ -51,7 +53,8 @@ function Content() {
 
                     {/* Remarks */}
                     <td>
-                      <TextArea />
+                      {/* If Head display comments, else show editable comment field */}
+                      {!pmt ? <pre> {comments} </pre> : <TextArea />}
                     </td>
                   </Contents>
                 );
