@@ -1,40 +1,36 @@
-import PropTypes from 'prop-types';
-import React, { useContext } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { ButtonContainer, Button } from '../../../components/ui/Button.styled';
 import { Container } from '../../../components/ui/Container.styled';
-import { SubButton } from '../Landing/components/Styled';
+import { SubButton } from '../departments/Departments.styled';
+
 import Mform from '../../../components/MFO-Form/Mfo';
 
-import { DepartmentContext } from '../index';
+function Preview() {
+  const [targets, setTargets] = useState([]);
 
-export const TargetContext = React.createContext();
+  const navigate = useNavigate();
+  const { deptID } = useParams();
 
-function Preview({ targets }) {
-  const { changeMode } = useContext(DepartmentContext);
+  // Get deparment opcr based on dept id
+  useEffect(() => {
+    console.log(deptID);
+  }, []);
 
   return (
     <Container>
-      <Mform targets={targets} />
-      <ButtonContainer>
-        <SubButton onClick={() => changeMode('landing')}> Back </SubButton>
-        <Button yellow onClick={() => changeMode('landing')}>
-          {' '}
-          Edit{' '}
-        </Button>
-        <Button onClick={() => changeMode('landing')}> Decline </Button>
+      <Mform targets={targets} pmt />
 
-        <SubButton green onClick={() => changeMode('landing')}>
-          {' '}
-          Accept{' '}
-        </SubButton>
+      <ButtonContainer>
+        <Button yellow onClick={() => navigate('/pmt')}>
+          Back
+        </Button>
+        <Button> Decline </Button>
+        <SubButton green> Accept </SubButton>
       </ButtonContainer>
     </Container>
   );
 }
 
 export default Preview;
-
-Preview.propTypes = {
-  targets: PropTypes.array.isRequired,
-};

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { Button } from '../../../../components/ui/Button.styled';
-import { Container as Con } from '../../../../components/ui/Container.styled';
+import { Button } from '../../../components/ui/Button.styled';
+import { Container as Con } from '../../../components/ui/Container.styled';
+
 export const Input = styled.input`
   color: black;
   height: 40px;
@@ -18,8 +19,7 @@ export const Container = styled(Con)`
 
 export const Depts = styled.button`
   height: 250px;
-  width: 300px;
-  border-radius: 50px;
+  border-radius: 25px;
   background-color: white;
   display: flex;
 
@@ -36,13 +36,14 @@ export const Depts = styled.button`
 `;
 
 export const Divider = styled.div`
-  flex-wrap: wrap;
-  display: flex;
+  overflow-x: hidden;
   overflow-y: auto;
   width: 100%;
   height: 100%;
-  padding-bottom: 20px;
-  gap: 70px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2em;
+  padding-bottom: 2em;
 `;
 
 export const SubButton = styled(Button)`
