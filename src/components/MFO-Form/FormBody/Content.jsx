@@ -7,7 +7,7 @@ import TextareaAutosize from 'react-textarea-autosize';
 import { TargetContext } from '../Mfo';
 
 function Content() {
-  const { targets, pmt } = useContext(TargetContext);
+  const { targets, pmt, handleComments } = useContext(TargetContext);
 
   return (
     <tbody>
@@ -16,8 +16,8 @@ function Content() {
       </Title>
 
       {targets &&
-        targets.map((obj) => {
-          const { _id, target, keySuccess } = obj;
+        targets.map((targetObj) => {
+          const { _id, target, keySuccess } = targetObj;
 
           return (
             <Fragment key={_id}>
@@ -29,7 +29,9 @@ function Content() {
                     {/* Target */}
 
                     {index == 0 ? (
-                      <td rowSpan={keySuccess.length}>{target}</td>
+                      <TargetColumn rowSpan={keySuccess.length}>
+                        {target}
+                      </TargetColumn>
                     ) : null}
 
                     {/* Key Success Indicators */}
@@ -55,7 +57,16 @@ function Content() {
                     {/* Remarks */}
                     <td>
                       {/* If Head display comments, else show editable comment field */}
-                      {!pmt ? <pre> {comments} </pre> : <TextArea />}
+                      {!pmt ? (
+                        <pre> {comments} </pre>
+                      ) : (
+                        <TextArea
+                          value={comments}
+                          onChange={(e) =>
+                            handleComments(e, targetObj._id, indicator._id)
+                          }
+                        />
+                      )}
                     </td>
                   </Contents>
                 );
@@ -82,7 +93,6 @@ const Contents = styled.tr`
   td {
     height: 1.25rem;
     padding: 0.25rem !important;
-    vertical-align: text-top;
   }
 
   pre {
@@ -93,4 +103,8 @@ const Contents = styled.tr`
 const TextArea = styled(TextareaAutosize)`
   resize: none;
   padding: 0.25em;
+`;
+
+const TargetColumn = styled.td`
+  vertical-align: text-top;
 `;

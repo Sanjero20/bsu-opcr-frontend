@@ -25,9 +25,39 @@ function Preview() {
     getTargets();
   }, []);
 
+  const handleComments = (e, targetID, indicatorID) => {
+    const updatedComments = targets.map((target) => {
+      // If it matches the target ID, loop over its success indicator
+      if (target._id === targetID) {
+        const { keySuccess } = target;
+
+        const updatedSuccessIndicator = keySuccess.map((indicator) => {
+          // If matches the indicator ID, edit the comment
+          if (indicator._id === indicatorID) {
+            return {
+              ...indicator,
+              comment: e.target.value,
+            };
+          }
+
+          return indicator;
+        });
+
+        return {
+          ...target,
+          keySuccess: updatedSuccessIndicator,
+        };
+      }
+
+      return target;
+    });
+
+    setTargets(updatedComments);
+  };
+
   return (
     <Container>
-      <Mform targets={targets} pmt />
+      <Mform targets={targets} handleComments={handleComments} pmt />
 
       <ButtonContainer>
         <Button yellow onClick={() => navigate('/pmt')}>

@@ -8,9 +8,9 @@ import FormBody from './FormBody/FormBody';
 
 export const TargetContext = React.createContext();
 
-function Mform({ targets, pmt }) {
+function Mform({ targets, pmt, handleComments }) {
   return (
-    <TargetContext.Provider value={{ targets, pmt }}>
+    <TargetContext.Provider value={{ targets, pmt, handleComments }}>
       <Container id="mfo-form">
         <FormHeader />
         <Guidelines />
@@ -25,6 +25,7 @@ export default Mform;
 Mform.propTypes = {
   targets: PropTypes.array,
   pmt: PropTypes.bool,
+  handleComments: PropTypes.func,
 };
 
 const Container = styled.div`
