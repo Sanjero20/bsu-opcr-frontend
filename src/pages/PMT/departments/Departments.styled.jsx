@@ -26,6 +26,10 @@ export const Depts = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
+  font-size: 24px;
+  letter-spacing: 0.5rem;
+  background-color: #853030;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
     rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
     rgba(0, 0, 0, 0.09) 0px 32px 16px;
@@ -33,6 +37,10 @@ export const Depts = styled.button`
   &:active {
     transform: translateY(3px);
     box-shadow: none;
+  }
+  &:hover {
+    background-color: white;
+    color: black;
   }
 `;
 

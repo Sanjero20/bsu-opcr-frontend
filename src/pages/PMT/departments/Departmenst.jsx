@@ -26,7 +26,7 @@ function Departments({ departments }) {
         {departments.length != 0 &&
           departments
             .filter((dept) => {
-              return search.toLocaleLowerCase() === ''
+              return search.trim() === ''
                 ? dept
                 : dept.name.toLowerCase().includes(search);
             })
