@@ -70,6 +70,11 @@ export const retrievePmtOpcr = async () => {
   return await getAPIRequest('/pmt/read/office');
 };
 
+// retrieves a specific opcr by the provided id
+export const retrieveDepartmentOpcr = async (departmentID) => {
+  return await getAPIRequest(`/pmt/read/office/${departmentID}`);
+};
+
 // marks the department's pmt as 'calibrated'
 export const acceptOpcr = async (departmentIdJSON) => {
   paramChecker(['departmentID'], departmentIdJSON);
