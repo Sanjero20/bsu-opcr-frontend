@@ -136,3 +136,9 @@ export const addCampusData = async (campusData) => {
 export const deleteCampus = async (campusID) => {
   return await deleteAPIRequest(`/admin/delete/campus/${campusID}`);
 };
+
+// assigns a department and campus to the account
+export const assignHeadOffice = async (accOfficeDetails) => {
+  paramChecker(['campusID', 'departmentID', 'accountID'], accOfficeDetails);
+  return await postAPIRequest('/admin/assign/account/head', accOfficeDetails);
+};
