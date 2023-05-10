@@ -29,7 +29,10 @@ function Content() {
                 return (
                   <Contents key={_id}>
                     {/* Target */}
-                    <td>{index == 0 ? <>{target}</> : null} </td>
+
+                    {index == 0 ? (
+                      <td rowSpan={keySuccess.length}>{target}</td>
+                    ) : null}
 
                     {/* Key Success Indicators */}
                     <td>
@@ -81,6 +84,7 @@ const Contents = styled.tr`
   td {
     height: 1.25rem;
     padding: 0.25rem !important;
+    vertical-align: text-top;
   }
 
   pre {
