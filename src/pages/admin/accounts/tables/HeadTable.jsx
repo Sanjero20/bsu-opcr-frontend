@@ -2,27 +2,38 @@ import { useState } from "react";
 import { BigP, SmallP, WrapperGrid3, DropDown } from "../Accounts.styled";
 import { useEffect } from "react";
 
-const TableElement = ({ account, campus, defaultCID }) => {
-  const [targetCampusID, setCampusTarget] = useState(defaultCID);
+const TableElement = ({ account, campus, defaultCID, defaultDID, id }) => {
+  const [targetDepartment, setTargetDepartment] = useState([]);
 
   const setCampusID = (val) => {
     setCampusTarget(val.target.value);
   };
 
+  useEffect(() => {
+    const data = campus.find(item => item._id == defaultCID);
+    setTargetDepartment(data.departments);
+  });
+
   return (
     <WrapperGrid3>
       <SmallP>{account.username}</SmallP>
-      <DropDown onInput={setCampusID}>
+      <DropDown onInput={setCampusID} defaultValue={defaultCID}>
         {
           (campus.length > 0) ?
           campus.map(campusdata => {
-            if (campusdata._id == defaultCID)
-              return <option key={campusdata._id} value={campusdata._id} selected={true}>{campusdata.campusName}</option>
             return <option key={campusdata._id} value={campusdata._id}>{campusdata.campusName}</option>
           }) : <></>
         }
       </DropDown>
-      <DropDown/>
+      <DropDown defaultValue={defaultDID}>
+        {
+          (targetDepartment.length > 0) ?
+          targetDepartment.map(dept => {
+            // console.log(dept);
+            return <option key={dept._id} value={dept._ud}>{dept.name}</option>
+          }) : <></>
+        }
+      </DropDown>
     </WrapperGrid3>
   );
 };
@@ -41,8 +52,10 @@ const HeadTable = ({ campusData, data }) => {
         data.map(item => {
           return <TableElement
                     key={item._id}
+                    id={item._id}
                     account={item}
                     campus={campusData}
+                    defaultDID={item.officeAssigned}
                     defaultCID={item.campusAssigned}/>
         }) : <></>
       }
