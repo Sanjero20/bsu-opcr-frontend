@@ -7,6 +7,8 @@ import { SubButton } from '../departments/Departments.styled';
 
 import Mform from '../../../components/MFO-Form/Mfo';
 
+import { retrieveDepartmentOpcr } from '../../../services/requests';
+
 function Preview() {
   const [targets, setTargets] = useState([]);
 
@@ -15,7 +17,12 @@ function Preview() {
 
   // Get deparment opcr based on dept id
   useEffect(() => {
-    console.log(deptID);
+    const getTargets = async () => {
+      const { opcr } = await retrieveDepartmentOpcr(deptID);
+      setTargets(opcr);
+    };
+
+    getTargets();
   }, []);
 
   return (

@@ -22,8 +22,6 @@ function Content() {
           return (
             <Fragment key={_id}>
               {keySuccess.map((indicator, index) => {
-                console.log(indicator);
-
                 const { _id, successIndicator, comments } = indicator;
 
                 return (
