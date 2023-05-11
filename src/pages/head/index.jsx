@@ -28,6 +28,10 @@ function Head() {
     setIsOnPreview(!isOnPreview);
   };
 
+  const resetTargets = () => {
+    setTargets([]);
+  };
+
   const sendForCalibration = async () => {
     const response = await createOpcr({ opcr: targets });
 
@@ -51,6 +55,7 @@ function Head() {
         status={status}
         isOnPreview={isOnPreview}
         toggleState={toggleState}
+        resetTargets={resetTargets}
         sendForCalibration={sendForCalibration}
       />
     </Container>

@@ -8,6 +8,7 @@ function BtnContainer({
   status,
   isOnPreview,
   toggleState,
+  resetTargets,
   sendForCalibration,
 }) {
   return (
@@ -39,7 +40,7 @@ function BtnContainer({
           )}
         </>
       ) : (
-        <Button>Reset</Button>
+        <Button onClick={resetTargets}>Reset</Button>
       )}
     </ButtonContainer>
   );
@@ -51,5 +52,6 @@ BtnContainer.propTypes = {
   status: PropTypes.string,
   isOnPreview: PropTypes.bool,
   toggleState: PropTypes.func,
+  resetTargets: PropTypes.func,
   sendForCalibration: PropTypes.func,
 };
