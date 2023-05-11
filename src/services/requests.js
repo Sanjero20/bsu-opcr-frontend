@@ -110,6 +110,18 @@ export const retrieveHeadOpcr = async () => {
 ////////////////////////
 //  admin operations  //
 ////////////////////////
+// registers a new pmt account
+export const registerPmt = async (creds) => {
+  paramChecker(['username', 'password'], creds);
+  return await postRequest('/register/pmt', creds);
+};
+
+// registers a new head account
+export const registerHead = async (creds) => {
+  paramChecker(['username', 'password'], creds);
+  return await postRequest('/register/head', creds);
+};
+
 // retrieves all the campuses data
 export const retrieveCampuses = async () => {
   return await getAPIRequest('/admin/read/campus');
