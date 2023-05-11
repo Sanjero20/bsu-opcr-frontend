@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { BigP, SmallP, WrapperGrid3, DropDown, TableScrollableWrapper } from "../Accounts.styled";
+import { BigP, SmallP, WrapperGrid3, DropDown, TableScrollableWrapper, SmallPu } from "../Accounts.styled";
 import { useEffect } from "react";
 import { assignHeadOffice } from "../../../../services/requests";
 
 const TableElement = ({ account, campus, defaultCID, defaultDID }) => {
   const [targetCID, setTargetCID] = useState(defaultCID);
-  const [targetDID, setTargetDID] = useState(defaultDID);
   const [targetDepartment, setTargetDepartment] = useState([]);
 
   const setCampusID = (val) => {
@@ -15,8 +14,7 @@ const TableElement = ({ account, campus, defaultCID, defaultDID }) => {
   };
 
   const setDepartmentID = async (val) => {
-    await setTargetDID(val.target.value);
-    const response = await assignHeadOffice({
+    await assignHeadOffice({
       campusID: targetCID,
       departmentID: val.target.value,
       accountID: account._id
@@ -31,7 +29,11 @@ const TableElement = ({ account, campus, defaultCID, defaultDID }) => {
 
   return (
     <WrapperGrid3>
-      <SmallP>{account.username}</SmallP>
+      {
+        (defaultCID == '' || defaultDID == '') ?
+        <SmallPu>{account.username}</SmallPu> :
+        <SmallP>{account.username}</SmallP>
+      }
       <DropDown onInput={setCampusID} defaultValue={targetCID}>
         {
           (campus.length > 0) ?
@@ -44,7 +46,7 @@ const TableElement = ({ account, campus, defaultCID, defaultDID }) => {
         {
           (targetDepartment.length > 0) ?
           targetDepartment.map(dept => {
-            if (dept._id == targetDID)
+            if (dept._id == defaultDID)
               return <option key={dept._id} value={dept._id} selected={true}>{dept.name}</option>
             return <option key={dept._id} value={dept._id}>{dept.name}</option>
           }) : <></>
