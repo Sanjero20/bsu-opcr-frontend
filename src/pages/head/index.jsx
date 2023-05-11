@@ -4,8 +4,8 @@ import Preview from './preview/Preview';
 import Edit from './edit/Edit';
 
 import { Container } from '../../components/ui/Container.styled';
-import { Button, ButtonContainer } from '../../components/ui/Button.styled';
 import { retrieveHeadOpcr, createOpcr } from '../../services/requests';
+import BtnContainer from './edit/components/BtnContainer';
 
 function Head() {
   const [status, setStatus] = useState('');
@@ -47,31 +47,12 @@ function Head() {
         <Edit targets={targets} setTargets={setTargets} />
       )}
 
-      <ButtonContainer>
-        {isOnPreview && status === 'Calibrated' && (
-          <Button onClick={() => window.print()}> Print</Button>
-        )}
-
-        <Button
-          yellow
-          onClick={toggleState}
-          disabled={status === 'Calibrating'}
-        >
-          {isOnPreview ? <>Edit</> : <>Preview</>}
-        </Button>
-
-        {isOnPreview ? (
-          <Button
-            onClick={sendForCalibration}
-            disabled={status === 'Calibrating'}
-          >
-            {' '}
-            Submit
-          </Button>
-        ) : (
-          <Button>Reset</Button>
-        )}
-      </ButtonContainer>
+      <BtnContainer
+        status={status}
+        isOnPreview={isOnPreview}
+        toggleState={toggleState}
+        sendForCalibration={sendForCalibration}
+      />
     </Container>
   );
 }
