@@ -8,7 +8,7 @@ export const deleteCookie = (key) => {
     const keyVal = cookie.split('=');
     if (keyVal[0] == key) {
       const dateGen = new Date('01-01-90');
-      saveCookie(key, `xxx;path=/;expires=${dateGen.toUTCString()}`);
+      saveCookie(key, `;path=/;expires=${dateGen.toUTCString()}`);
     }
   });
 };
