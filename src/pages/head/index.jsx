@@ -7,6 +7,8 @@ import { Container } from '../../components/ui/Container.styled';
 import { retrieveHeadOpcr, createOpcr } from '../../services/requests';
 import BtnContainer from './edit/components/BtnContainer';
 
+import { showErrorToast, showSuccessToast } from '../../helpers/toast';
+
 function Head() {
   const [status, setStatus] = useState('');
   const [targets, setTargets] = useState([]);
@@ -14,15 +16,19 @@ function Head() {
 
   useEffect(() => {
     const getOPCR = async () => {
-      const response = await retrieveHeadOpcr();
-      const { opcr, status } = await response;
-
-      setStatus(status);
-      setTargets(opcr);
+      try {
+        const response = await retrieveHeadOpcr();
+        if (response.error) throw response.error;
+        setStatus(response.status);
+        setTargets(response.opcr);
+      } catch (error) {
+        showErrorToast('Something went wrong, Try again');
+        console.log(error);
+      }
     };
 
     getOPCR();
-  }, []);
+  }, [retrieveHeadOpcr]);
 
   const toggleState = () => {
     setIsOnPreview(!isOnPreview);
@@ -35,10 +41,13 @@ function Head() {
   const sendForCalibration = async () => {
     const response = await createOpcr({ opcr: targets });
 
-    console.log(response);
+    if (response.error) {
+      showErrorToast(response.error);
+      return;
+    }
 
-    // Todo update local changes
-    // ? update status to callibrating when response has no error
+    setStatus('Calibrating');
+    showSuccessToast('Submitted for calibration');
   };
 
   return (

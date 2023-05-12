@@ -8,6 +8,6 @@ function Preview({ targets, pmt }) {
 export default Preview;
 
 Preview.propTypes = {
-  targets: PropTypes.array.isRequired,
+  targets: PropTypes.array,
   pmt: PropTypes.bool,
 };
