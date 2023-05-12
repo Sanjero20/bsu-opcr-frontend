@@ -11,6 +11,7 @@ import pmtRoutes from './subroutes/pmt';
 
 // pages
 import Login from '../pages/login/Login';
+import Error from '../pages/error/Error';
 
 const routes = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const routes = createBrowserRouter([
     path: '/pmt',
     element: <Layout />,
     children: [...pmtRoutes],
+  },
+  {
+    path: '*',
+    element: <Error type={'404'} />,
   },
 ]);
 
