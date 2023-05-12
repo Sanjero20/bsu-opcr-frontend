@@ -9,7 +9,7 @@ const closeInMilliseconds = 5000;
 function App() {
   return (
     <>
-      <RouterProvider router={routes} />;
+      <RouterProvider router={routes} />
       <ToastContainer autoClose={closeInMilliseconds} draggable="false" />
     </>
   );
