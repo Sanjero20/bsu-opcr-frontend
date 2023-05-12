@@ -7,17 +7,12 @@ import { Input, Depts, Divider } from './Departments.styled';
 
 function Departments({ departments }) {
   const [search, setSearchText] = useState('');
-
   const navigate = useNavigate();
-
-  // const handleSearch = (e) => {
-  //   setSearchText(e.target.value);
-  // };
 
   return (
     <Container>
       <Input
-        placeholder='Search'
+        placeholder="Search"
         value={search}
         onChange={(e) => setSearchText(e.target.value)}
       />
