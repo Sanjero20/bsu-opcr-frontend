@@ -23,6 +23,7 @@ const TableElement = ({ account, data, defaultCID }) => {
         : <SmallPu>{account.username}</SmallPu>
       }
       <DropDown onInput={setTargetCampus} defaultValue={targetCID}>
+        <option key='' value=''>None</option>
         {
           (data && (data.length > 0)) ?
           data.map(campusdata => {

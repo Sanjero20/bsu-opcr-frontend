@@ -35,6 +35,7 @@ const TableElement = ({ account, campus, defaultCID, defaultDID }) => {
         <SmallP>{account.username}</SmallP>
       }
       <DropDown onInput={setCampusID} defaultValue={targetCID}>
+        <option key='' value=''>None</option>
         {
           (campus.length > 0) ?
           campus.map(campusdata => {
@@ -43,6 +44,7 @@ const TableElement = ({ account, campus, defaultCID, defaultDID }) => {
         }
       </DropDown>
       <DropDown onInput={setDepartmentID}>
+        <option key='' value=''>None</option>
         {
           (targetDepartment.length > 0) ?
           targetDepartment.map(dept => {
