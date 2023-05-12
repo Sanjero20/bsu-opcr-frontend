@@ -7,6 +7,8 @@ import { SubButton } from '../departments/Departments.styled';
 
 import Mform from '../../../components/MFO-Form/Mfo';
 
+import { showErrorToast, showSuccessToast } from '../../../helpers/toast';
+
 import {
   retrieveDepartmentOpcr,
   acceptOpcr,
@@ -77,12 +79,24 @@ function Preview() {
     const opcrDetails = { departmentID: deptID, targets: filtered };
     const response = await declineOpcr(opcrDetails);
 
-    console.log(response);
+    if (response.error) {
+      showErrorToast();
+      return;
+    }
+
+    showSuccessToast('Successfully added comments for calibration');
   };
 
   const acceptForm = async () => {
     const response = await acceptOpcr({ departmentID: deptID });
     console.log(response);
+
+    if (response.error) {
+      showErrorToast();
+      return;
+    }
+
+    showSuccessToast('Opcr accepted');
   };
 
   return (
@@ -93,10 +107,11 @@ function Preview() {
         <Button yellow onClick={() => navigate('/pmt')}>
           Back
         </Button>
+
         <Button onClick={declineForm}> Decline </Button>
+
         <SubButton green onClick={acceptForm}>
-          {' '}
-          Accept{' '}
+          Accept
         </SubButton>
       </ButtonContainer>
     </Container>
