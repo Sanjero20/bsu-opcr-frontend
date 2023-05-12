@@ -22,7 +22,7 @@ function Head() {
         setStatus(response.status);
         setTargets(response.opcr);
       } catch (error) {
-        showErrorToast('Something went wrong, Try again');
+        showErrorToast();
         console.log(error);
       }
     };
@@ -42,7 +42,7 @@ function Head() {
     const response = await createOpcr({ opcr: targets });
 
     if (response.error) {
-      showErrorToast(response.error);
+      showErrorToast();
       return;
     }
 

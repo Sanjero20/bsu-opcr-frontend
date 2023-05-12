@@ -8,6 +8,7 @@ export const showSuccessToast = (message) => {
   toast.success(message);
 };
 
-export const showErrorToast = (message) => {
+let defaultErrorMsg = 'Something went wrong, Try Again!';
+export const showErrorToast = (message = defaultErrorMsg) => {
   toast.error(message, { autoClose: 2000 });
 };
