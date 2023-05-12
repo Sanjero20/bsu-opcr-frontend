@@ -28,7 +28,7 @@ export const Depts = styled.button`
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 22px;
+  font-size: 28px;
   letter-spacing: 0.3rem;
   background-color: #853030;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
@@ -36,12 +36,13 @@ export const Depts = styled.button`
     rgba(0, 0, 0, 0.09) 0px 32px 16px;
 
   &:active {
-    transform: translateY(3px);
+    transform: scale(95%);
     box-shadow: none;
   }
   &:hover {
     background-color: white;
     color: black;
+    font-size: 32px;
   }
 `;
 
