@@ -19,13 +19,13 @@ export const FooterContainer = styled.div`
 `;
 
 export const HeroSection = styled.div`
-  padding-top: 3rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
 `;
 
 export const Text = styled.div`
@@ -34,7 +34,7 @@ export const Text = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 4rem;
+  font-size: 6rem;
 `;
 
 export const Message = styled.p`
@@ -43,11 +43,9 @@ export const Message = styled.p`
 
 export const Img = styled.img`
   margin-bottom: 1em;
-  transform: ${({ is404 }) => (is404 ? 'translateY(3em) ' : null)};
-
   height: 350px;
 
   @media screen and (max-height: 768px) {
-    height: 250px;
+    height: 225px;
   }
 `;
