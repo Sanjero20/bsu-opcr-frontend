@@ -17,6 +17,7 @@ import {
 
 function Preview() {
   const [targets, setTargets] = useState([]);
+  const [hasVoted, setHasVoted] = useState(true);
 
   const navigate = useNavigate();
   const { deptID } = useParams();
@@ -24,8 +25,9 @@ function Preview() {
   // Get deparment opcr based on dept id
   useEffect(() => {
     const getTargets = async () => {
-      const { opcr } = await retrieveDepartmentOpcr(deptID);
+      const { opcr, hasVoted } = await retrieveDepartmentOpcr(deptID);
       setTargets(opcr);
+      setHasVoted(hasVoted);
     };
 
     getTargets();
@@ -96,6 +98,7 @@ function Preview() {
       return;
     }
 
+    setHasVoted(true);
     showSuccessToast('Opcr accepted');
   };
 
@@ -108,9 +111,11 @@ function Preview() {
           Back
         </Button>
 
-        <Button onClick={declineForm}> Decline </Button>
+        <Button onClick={declineForm} disabled={hasVoted}>
+          Decline
+        </Button>
 
-        <SubButton green onClick={acceptForm}>
+        <SubButton green onClick={acceptForm} disabled={hasVoted}>
           Accept
         </SubButton>
       </ButtonContainer>
