@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import theme from '../../styles/theme';
+import { Button } from '../../components/ui/Button.styled';
 
 export const PageContainer = styled.div`
   height: 100vh;
@@ -11,6 +12,9 @@ export const PageContainer = styled.div`
 export const FooterContainer = styled.div`
   background-color: ${theme.red};
   height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 2;
 
   @media screen and (max-height: 768px) {
@@ -48,4 +52,10 @@ export const Img = styled.img`
   @media screen and (max-height: 768px) {
     height: 225px;
   }
+`;
+
+export const Btn = styled(Button)`
+  color: black;
+  background-color: white;
+  font-weight: bold;
 `;

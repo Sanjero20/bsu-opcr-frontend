@@ -1,14 +1,35 @@
 import PropTypes from 'prop-types';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Header from '../../layouts/Header/Header';
-import { PageContainer, HeroSection, FooterContainer } from './Error.styled';
+import {
+  PageContainer,
+  HeroSection,
+  FooterContainer,
+  Btn,
+} from './Error.styled';
 
 // error components
 import NotFound from './components/NotFound';
 import NoAccess from './components/NoAccess';
 
+import { getCookie } from '../../services/cookieService';
+
 function Error({ type }) {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  const goBackToWork = () => {
+    const permission = getCookie('access');
+
+    switch (permission) {
+      case 'admin':
+      case 'head':
+      case 'pmt':
+        navigate(permission, { replace: true });
+        break;
+      default:
+        navigate('/', { replace: true });
+    }
+  };
 
   return (
     <PageContainer>
@@ -19,7 +40,9 @@ function Error({ type }) {
         {type === 404 && <NotFound />}
       </HeroSection>
 
-      <FooterContainer />
+      <FooterContainer>
+        <Btn onClick={goBackToWork}>Back to work</Btn>
+      </FooterContainer>
     </PageContainer>
   );
 }
