@@ -22,7 +22,6 @@ function Head() {
         setStatus(response.status);
         setTargets(response.opcr);
       } catch (error) {
-        showErrorToast();
         console.log(error);
       }
     };

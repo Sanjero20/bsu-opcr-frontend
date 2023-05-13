@@ -24,7 +24,7 @@ function Error({ type }) {
       case 'admin':
       case 'head':
       case 'pmt':
-        navigate(permission, { replace: true });
+        navigate(`/${permission}`, { replace: true });
         break;
       default:
         navigate('/', { replace: true });

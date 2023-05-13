@@ -25,12 +25,12 @@ const routes = createBrowserRouter([
   },
   {
     path: '/head',
-    element: <Layout />,
+    element: <Layout type="head" />,
     children: [...headRoutes],
   },
   {
     path: '/pmt',
-    element: <Layout />,
+    element: <Layout type="pmt" />,
     children: [...pmtRoutes],
   },
   {
