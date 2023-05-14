@@ -66,3 +66,26 @@ export const Link = styled.a`
   color: ${theme.pink};
   text-align: center;
 `;
+
+export const InputContainer = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  input {
+    width: 100%;
+  }
+`;
+
+export const BtnIcon = styled.button`
+  position: absolute;
+  right: 0.25em;
+  height: 90%;
+  background-color: white;
+  padding: 0 0.5em;
+
+  svg {
+    font-size: 1.5em;
+    color: gray;
+  }
+`;

@@ -5,12 +5,16 @@ import {
   Container,
   Form,
   Title,
+  InputContainer,
   Input,
+  BtnIcon,
   Button,
   Link,
   Left,
   Right,
 } from './Login.styled';
+
+import { VscEye, VscEyeClosed } from 'react-icons/vsc';
 
 import { login } from '../../services/requests';
 import { getCookie, saveCookie } from '../../services/cookieService';
@@ -18,7 +22,7 @@ import { getCookie, saveCookie } from '../../services/cookieService';
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+  const [showPass, setShowPass] = useState(false);
   const [error, setError] = useState('');
 
   const navigate = useNavigate();
@@ -40,6 +44,10 @@ function Login() {
     if (!error) return;
     setError('');
   }, [username, password]);
+
+  const toggleShowPassword = () => {
+    setShowPass(!showPass);
+  };
 
   const signIn = async (e) => {
     e.preventDefault();
@@ -84,13 +92,19 @@ function Login() {
               required
             />
 
-            <Input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+            <InputContainer>
+              <Input
+                type={!showPass ? 'password' : 'text'}
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+
+              <BtnIcon type="button" onClick={toggleShowPassword}>
+                {showPass ? <VscEye /> : <VscEyeClosed />}
+              </BtnIcon>
+            </InputContainer>
 
             <Link href="">Forgot Password?</Link>
           </fieldset>
