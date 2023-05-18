@@ -1,6 +1,9 @@
-import { assignPmtCampus } from "../../../../services/requests";
+import { assignPmtCampus, deletePmt } from "../../../../services/requests";
 import { BigP, DropDown, SmallP, SmallPu, WrapperGrid3 } from "../Accounts.styled";
+import { AiFillDelete } from "react-icons/ai";
 import { useState } from "react";
+
+import theme from "../../../../styles/theme";
 
 const TableElement = ({ account, data, defaultCID }) => {
   const [targetCID, setTargetCID] = useState(defaultCID);
@@ -15,11 +18,28 @@ const TableElement = ({ account, data, defaultCID }) => {
     if (response.assigned) window.location.reload();
   };
 
+  const deleteAccount = (accountID) => {
+    return async function() {
+      const response = await deletePmt(accountID);
+      if (response.deleted) window.location.reload();
+    };
+  };
+
   return (
     <WrapperGrid3>
       { 
-        (defaultCID != '')
-        ? <SmallP>{account.username}</SmallP>
+        (defaultCID != '') ?
+        <div>
+          <AiFillDelete style={{
+            fontSize: '13pt',
+            fontWeight: 'bold',
+            color: theme.red,
+            cursor: 'pointer',
+            translate: '0px 0.1rem',
+            float: 'left'
+          }}
+          onClick={deleteAccount(account._id)}/><SmallP>{account.username}</SmallP>
+        </div>
         : <SmallPu>{account.username}</SmallPu>
       }
       <DropDown onInput={setTargetCampus} defaultValue={targetCID}>

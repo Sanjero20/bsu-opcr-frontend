@@ -122,6 +122,16 @@ export const registerHead = async (creds) => {
   return await postRequest('/register/head', creds);
 };
 
+// deletes head account
+export const deleteHead = async (id) => {
+  return await deleteAPIRequest(`/admin/delete/account/head/${id}`);
+};
+
+// deletes a pmt account
+export const deletePmt = async (id) => {
+  return await deleteAPIRequest(`/admin/delete/account/pmt/${id}`);
+};
+
 // retrieves all the campuses data
 export const retrieveCampuses = async () => {
   return await getAPIRequest('/admin/read/campus');

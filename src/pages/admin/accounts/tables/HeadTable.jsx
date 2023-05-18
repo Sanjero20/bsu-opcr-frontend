@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { BigP, SmallP, WrapperGrid3, DropDown, TableScrollableWrapper, SmallPu } from "../Accounts.styled";
 import { useEffect } from "react";
-import { assignHeadOffice } from "../../../../services/requests";
+import { assignHeadOffice, deleteHead } from "../../../../services/requests";
+import { AiFillDelete } from "react-icons/ai";
+import theme from "../../../../styles/theme";
 
 const TableElement = ({ account, campus, defaultCID, defaultDID }) => {
   const [targetCID, setTargetCID] = useState(defaultCID);
@@ -21,6 +23,13 @@ const TableElement = ({ account, campus, defaultCID, defaultDID }) => {
     });
   };
 
+  const deleteAccount = (accountID) => {
+    return async function() {
+      const response = await deleteHead(accountID);
+      if (response.deleted) window.location.reload();
+    };
+  };
+
   useEffect(() => {
     // for loading the options for default departments
     const data = campus.find(item => item._id == defaultCID);
@@ -32,7 +41,17 @@ const TableElement = ({ account, campus, defaultCID, defaultDID }) => {
       {
         (defaultCID == '' || defaultDID == '') ?
         <SmallPu>{account.username}</SmallPu> :
-        <SmallP>{account.username}</SmallP>
+        <div>
+          <AiFillDelete style={{
+            fontSize: '13pt',
+            fontWeight: 'bold',
+            color: theme.red,
+            cursor: 'pointer',
+            translate: '0px 0.1rem',
+            float: 'left'
+          }}
+          onClick={deleteAccount(account._id)}/><SmallP>{account.username}</SmallP>
+        </div>
       }
       <DropDown onInput={setCampusID} defaultValue={targetCID}>
         <option key='' value=''>None</option>
